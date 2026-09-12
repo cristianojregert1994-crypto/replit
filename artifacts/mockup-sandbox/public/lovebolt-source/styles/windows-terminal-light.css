@@ -1,0 +1,410 @@
+/* CRCELL v6.2.0 — Windows Terminal Light / shell unificado 35% + 65%
+   Camada exclusivamente visual. Mantém lógica, integrações, rotas e detecção existentes. */
+
+:root {
+  color-scheme: light !important;
+  --wt-app: #f3f3f3;
+  --wt-titlebar: #e7e7e7;
+  --wt-surface: #ffffff;
+  --wt-surface-alt: #f8f8f8;
+  --wt-hover: #e9e9e9;
+  --wt-pressed: #dedede;
+  --wt-border: #c8c8c8;
+  --wt-border-strong: #8d8d8d;
+  --wt-text: #0c0c0c;
+  --wt-muted: #5f5f5f;
+  --wt-terminal-black: #0c0c0c;
+  --wt-blue: #0067c0;
+  --wt-font-ui: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  --wt-font-mono: "Cascadia Code", "Cascadia Mono", Consolas, monospace;
+}
+
+html, body {
+  color-scheme: light !important;
+  background: var(--wt-app) !important;
+  color: var(--wt-text) !important;
+  font-family: var(--wt-font-ui) !important;
+}
+
+/* ── Janela única: Extensão 35% | GPT 65%, sem trilho/divisor central ── */
+.dual-shell {
+  --pane-connect: 35fr !important;
+  --pane-chat: 65fr !important;
+  grid-template-columns: minmax(0, var(--pane-connect)) minmax(0, var(--pane-chat)) !important;
+  gap: 0 !important;
+  background: var(--wt-app) !important;
+  border: 1px solid var(--wt-border-strong) !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,.14) !important;
+}
+.dual-shell::before,
+.dual-shell::after {
+  content: none !important;
+  display: none !important;
+}
+.dual-divider { display: none !important; width: 0 !important; min-width: 0 !important; }
+.dual-pane,
+body.light .dual-pane {
+  background: var(--wt-surface) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.dual-pane::after {
+  content: none !important;
+  display: none !important;
+}
+.dual-pane--lovebolt,
+.dual-pane--chatgpt,
+.chat-stage,
+.pane-frame {
+  background: var(--wt-surface) !important;
+  box-shadow: none !important;
+}
+
+/* ── Barra superior do GPT no estilo Windows Terminal ── */
+.pane-toolbar,
+body.light .pane-toolbar {
+  min-height: 42px !important;
+  height: 42px !important;
+  padding: 0 8px !important;
+  background: var(--wt-titlebar) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--wt-border) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.pane-brand { gap: 6px !important; }
+.chatgpt-mark,
+body.light .chatgpt-mark {
+  width: 28px !important;
+  height: 28px !important;
+  border: 1px solid var(--wt-border) !important;
+  border-radius: 4px !important;
+  background: var(--wt-surface) !important;
+  color: var(--wt-terminal-black) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+.pane-title-wrap strong { color: var(--wt-text) !important; font-weight: 600 !important; }
+.pane-title-wrap span,
+#syncStatus,
+#syncStatus.is-online { color: var(--wt-muted) !important; text-shadow: none !important; }
+.chat-actions button,
+body.light .chat-actions button,
+.chat-actions .fullscreen-mode-btn {
+  min-height: 28px !important;
+  border: 1px solid transparent !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  color: var(--wt-text) !important;
+  box-shadow: none !important;
+  font-family: var(--wt-font-ui) !important;
+}
+.chat-actions button:hover,
+.chat-actions button:focus-visible,
+.chat-actions button.is-active,
+.chat-actions button[aria-pressed="true"],
+body.light .chat-actions button:hover,
+.chat-actions .fullscreen-mode-btn:hover,
+.chat-actions .fullscreen-mode-btn.is-active {
+  border-color: var(--wt-border) !important;
+  background: var(--wt-hover) !important;
+  color: var(--wt-text) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+.chat-actions button:active { background: var(--wt-pressed) !important; }
+.chat-actions .topbar-action b { font-family: var(--wt-font-ui) !important; }
+.chat-fallback,
+body.light .chat-fallback {
+  background: #fff7f7 !important;
+  color: var(--wt-text) !important;
+  border: 1px solid #d5a0a0 !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+
+/* ── Painel da extensão: mesmo chrome visual do Terminal ── */
+body::after,
+body.light::after { content: none !important; display: none !important; }
+body { border: 0 !important; box-shadow: none !important; }
+.header,
+body.light .header {
+  min-height: 42px !important;
+  height: 42px !important;
+  padding: 6px 8px !important;
+  background: var(--wt-titlebar) !important;
+  border: 0 !important;
+  border-bottom: 1px solid var(--wt-border) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.header-logo {
+  width: 28px !important;
+  height: 28px !important;
+  flex: 0 0 28px !important;
+  border-radius: 4px !important;
+  border: 1px solid var(--wt-border) !important;
+  background: var(--wt-surface) !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+.header-logo img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+.header-title,
+.header-title--lovebolt { color: var(--wt-text) !important; font-weight: 600 !important; text-shadow: none !important; }
+.header-robot-team span,
+.header-robot-team span.is-active {
+  text-shadow: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+.header-robot-team span.is-active { border-color: var(--wt-border-strong) !important; background: var(--wt-surface) !important; }
+.header-action-btn,
+.icon-btn,
+.overlay-toggle-btn,
+.header-pull-btn,
+body.light .header-action-btn {
+  height: 28px !important;
+  border: 1px solid transparent !important;
+  border-radius: 4px !important;
+  background: transparent !important;
+  color: var(--wt-text) !important;
+  box-shadow: none !important;
+}
+.header-action-btn:hover,
+.icon-btn:hover,
+.overlay-toggle-btn:hover,
+.header-pull-btn:hover,
+.header-action-btn:focus-visible {
+  border-color: var(--wt-border) !important;
+  background: var(--wt-hover) !important;
+  color: var(--wt-text) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.content {
+  background: var(--wt-app) !important;
+  gap: 8px !important;
+  padding: 8px !important;
+}
+.card,
+.card-accent,
+.prompt-shortcuts-panel,
+.prompt-mode-dialog,
+.lovebolt-chat-shell,
+body.light .card,
+body.light .prompt-shortcuts-panel,
+body.light .prompt-mode-dialog {
+  background: var(--wt-surface) !important;
+  border: 1px solid var(--wt-border) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+.card-accent { background: var(--wt-surface) !important; }
+.card-header { padding: 10px 12px !important; border-bottom: 1px solid #ededed !important; }
+.card-body { padding: 10px 12px 12px !important; }
+.card-title,
+.project-detect-name,
+.connection-name,
+.user-name,
+.lovebolt-chat-brand-title,
+.lovebolt-chat-brand-name { color: var(--wt-text) !important; text-shadow: none !important; }
+.connection-detail,
+.user-detail,
+.hint-text,
+.hint-step,
+.detail-label,
+.detail-value,
+.status-label,
+.status-value,
+.chat-status-text,
+.lovebolt-chat-brand-subtitle,
+.lovebolt-chat-route-subtitle,
+.lovebolt-chat-footer-copy { color: var(--wt-muted) !important; }
+.divider,
+.lovebolt-chat-divider { background: var(--wt-border) !important; box-shadow: none !important; }
+
+/* Windows Terminal usa tipografia monoespaçada para conteúdo técnico. */
+.mono,
+.repo-name,
+.project-item-branch,
+.project-item-meta,
+.chat-project-repo,
+input.mono,
+textarea.chat-input,
+.lovebolt-chat-input,
+.code-block,
+pre,
+code {
+  font-family: var(--wt-font-mono) !important;
+}
+
+.input,
+.select,
+textarea,
+input,
+body.light .input,
+body.light .select,
+body.light textarea,
+body.light input,
+.chat-input,
+body.light .chat-input {
+  background: var(--wt-surface) !important;
+  color: var(--wt-text) !important;
+  border: 1px solid var(--wt-border-strong) !important;
+  border-radius: 3px !important;
+  box-shadow: none !important;
+}
+.input:focus,
+.select:focus,
+textarea:focus,
+input:focus,
+.chat-input:focus {
+  border-color: var(--wt-terminal-black) !important;
+  outline: 1px solid var(--wt-terminal-black) !important;
+  outline-offset: -2px !important;
+  box-shadow: none !important;
+}
+input::placeholder,
+textarea::placeholder,
+body.light input::placeholder,
+body.light textarea::placeholder { color: #707070 !important; opacity: 1 !important; }
+
+.btn,
+.btn-icon,
+.top-tool-btn,
+.prompt-shortcuts-btn,
+.projects-toggle-btn,
+.projects-refresh-btn,
+.github-force-detect-btn,
+.chat-route-btn,
+.lovebolt-attach-btn,
+body.light .icon-btn,
+body.light .btn-ghost,
+body.light .btn-outline-danger,
+body.light .top-tool-btn,
+body.light .prompt-shortcuts-btn {
+  border: 1px solid var(--wt-border) !important;
+  border-radius: 4px !important;
+  background: var(--wt-surface-alt) !important;
+  color: var(--wt-text) !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+.btn:hover,
+.btn-icon:hover,
+.top-tool-btn:hover,
+.prompt-shortcuts-btn:hover,
+.projects-toggle-btn:hover,
+.projects-refresh-btn:hover,
+.github-force-detect-btn:hover,
+.chat-route-btn:hover,
+.lovebolt-attach-btn:hover,
+button:focus-visible {
+  border-color: var(--wt-border-strong) !important;
+  background: var(--wt-hover) !important;
+  color: var(--wt-text) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+.btn:active,
+.top-tool-btn:active,
+.chat-route-btn:active { background: var(--wt-pressed) !important; }
+.btn-primary,
+.lovebolt-send-btn,
+body.light .btn-primary {
+  background: var(--wt-terminal-black) !important;
+  color: #ffffff !important;
+  border-color: var(--wt-terminal-black) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+.btn-primary:hover,
+.lovebolt-send-btn:hover {
+  background: #252525 !important;
+  color: #ffffff !important;
+  border-color: #252525 !important;
+  box-shadow: none !important;
+}
+
+.connection-item,
+.status-chip,
+.projects-dropdown,
+.project-item,
+.supabase-connected-badge,
+.chat-project-bar,
+.lovebolt-pill,
+body.light .projects-toggle-btn,
+body.light .projects-dropdown,
+body.light .projects-refresh-btn {
+  background: var(--wt-surface-alt) !important;
+  border-color: var(--wt-border) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+.connection-item:hover,
+.connection-item:focus-within,
+.project-item:hover,
+.project-item.active {
+  background: var(--wt-hover) !important;
+  border-color: var(--wt-border-strong) !important;
+  box-shadow: none !important;
+}
+.project-item.active { border-left: 3px solid var(--wt-terminal-black) !important; }
+
+.badge {
+  border-radius: 999px !important;
+  box-shadow: none !important;
+}
+.badge-dot,
+.chat-status-dot { box-shadow: none !important; filter: none !important; }
+
+.lovebolt-chat-shell,
+#chatCard {
+  border-color: var(--wt-border) !important;
+  box-shadow: none !important;
+}
+.lovebolt-chat-topbar {
+  background: var(--wt-titlebar) !important;
+  border-bottom: 1px solid var(--wt-border) !important;
+  box-shadow: none !important;
+}
+.lovebolt-chat-composer-wrap,
+.lovebolt-chat-composer,
+body.light .lovebolt-chat-composer {
+  background: var(--wt-surface) !important;
+  border-color: var(--wt-border-strong) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+}
+.lovebolt-chat-composer:focus-within {
+  border-color: var(--wt-terminal-black) !important;
+  box-shadow: none !important;
+}
+.lovebolt-route-actions .chat-route-btn.is-selected {
+  background: var(--wt-terminal-black) !important;
+  color: #fff !important;
+  border-color: var(--wt-terminal-black) !important;
+  box-shadow: none !important;
+}
+.lovebolt-route-actions .chat-route-btn.is-selected::after { background: #fff !important; box-shadow: none !important; }
+
+.footer {
+  background: var(--wt-titlebar) !important;
+  color: var(--wt-muted) !important;
+  border-top: 1px solid var(--wt-border) !important;
+  box-shadow: none !important;
+  font-family: var(--wt-font-mono) !important;
+}
+
+::-webkit-scrollbar { width: 10px !important; height: 10px !important; }
+::-webkit-scrollbar-track { background: var(--wt-app) !important; }
+::-webkit-scrollbar-thumb { background: #bdbdbd !important; border: 2px solid var(--wt-app) !important; border-radius: 0 !important; }
+::-webkit-scrollbar-thumb:hover { background: #9f9f9f !important; }
+
+/* Nada vaza do workspace. */
+html, body, .dual-shell, .dual-pane, .chat-stage, .pane-frame, .content, .card, .lovebolt-chat-shell {
+  max-width: 100% !important;
+}

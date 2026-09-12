@@ -1,0 +1,1 @@
+- [Mockup preview bootstrap](mockup-preview-bootstrap.md) — direct sandbox startup can recover visual previews when artifact registration fails.

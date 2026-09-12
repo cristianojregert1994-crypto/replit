@@ -1,0 +1,15 @@
+CRCELL — LoveBoltReplitGPT Studio v6.1.0 — SEM PREVIEW
+
+[OK] Layout principal contém somente Extensão + ChatGPT.
+[OK] Terceiro painel removido.
+[OK] Preview Studio removido.
+[OK] Sandbox/renderer GPT removidos.
+[OK] Botão Preview removido do popup.
+[OK] Rotas GET_GPT_PREVIEW_STATUS / GET_GPT_LOCAL_PREVIEW / SET_PROJECT_PREVIEW_URL removidas.
+[OK] Regra Chat GitHub não manda mais atualizar Preview Studio.
+[OK] GPT Studio continua usando GitHub e Supabase.
+[OK] Lovable abre o editor Lovable, não um preview da extensão.
+[OK] Tema claro, LED preto, tela cheia e divisor redimensionável preservados.
+
+
+[v6.2.0] Layout fixo: Extensão 35% + ChatGPT 65%; divisor central removido; tema único claro inspirado no Windows Terminal; demais funções preservadas.

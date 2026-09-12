@@ -1,0 +1,48 @@
+/* LoveBoltReplit v4.4.0 — barra superior funcional e compacta */
+.header.header--main-tools{
+  height:42px!important;min-height:42px!important;max-height:42px!important;
+  padding:4px 7px!important;gap:7px!important;display:flex!important;align-items:center!important;
+  justify-content:space-between!important;border-bottom:1px solid rgba(var(--accent-rgb),.20)!important;
+  box-shadow:inset 0 2px 0 rgba(var(--accent-rgb),.88),0 4px 18px rgba(0,0,0,.14)!important;
+  overflow:hidden!important;
+}
+.header--main-tools .header-brand{min-width:0!important;gap:6px!important;flex:1 1 auto!important;overflow:hidden!important}
+.header--main-tools .header-logo{
+  width:30px!important;height:30px!important;flex:0 0 30px!important;min-width:30px!important;
+  background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important
+}
+.header--main-tools .header-logo img{width:100%!important;height:100%!important;object-fit:contain!important;filter:drop-shadow(0 0 7px rgba(var(--accent-rgb),.34))}
+.header--main-tools .brand-title-block{display:flex!important;align-items:center!important;min-width:0!important}
+.header--main-tools .header-title--lovebolt{font-size:12px!important;line-height:1!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
+.header--main-tools .header-brand-subtitle{display:none!important}
+.header-actions{display:flex;align-items:center;justify-content:flex-end;gap:4px;min-width:0;flex:0 1 auto}
+.header-action-btn{
+  min-height:28px!important;height:28px!important;padding:0 7px!important;border-radius:8px!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:4px!important;
+  white-space:nowrap!important;font:700 8.5px/1 system-ui!important;flex:0 0 auto!important
+}
+.header-action-btn svg{width:13px!important;height:13px!important}
+.header--main-tools .overlay-toggle-btn{min-width:auto!important}
+.header--main-tools .theme-toggle{width:auto!important;min-width:auto!important}
+.header-pull-btn{
+  border:1px solid rgba(var(--accent-rgb),.28);background:rgba(var(--accent-rgb),.07);color:var(--accent-bright);cursor:pointer;
+  transition:border-color .15s ease,background .15s ease,box-shadow .15s ease,color .15s ease
+}
+.header-pull-btn:hover{border-color:rgba(var(--accent-rgb),.52);background:rgba(var(--accent-rgb),.14);box-shadow:0 0 9px rgba(var(--accent-rgb),.14)}
+.header-pull-btn.spinning .header-pull-icon{display:inline-block;animation:header-pull-spin .7s linear infinite}
+@keyframes header-pull-spin{to{transform:rotate(360deg)}}
+@media(max-width:760px){
+  .header.header--main-tools{padding-left:5px!important;padding-right:5px!important;gap:4px!important}
+  .header--main-tools .header-logo{width:27px!important;height:27px!important;flex-basis:27px!important;min-width:27px!important}
+  .header--main-tools .header-title--lovebolt{font-size:10.5px!important}
+  .header-actions{gap:3px!important}
+  .header-action-btn{padding:0 5px!important}
+  .header-action-label,.header-action-btn>span:not(.overlay-toggle-icon):not(.overlay-toggle-label):not(.header-pull-icon){display:none!important}
+  .header--main-tools .overlay-toggle-label{font-size:7.5px!important}
+}
+@media(max-width:520px){
+  .header--main-tools .header-title--lovebolt{font-size:9.5px!important}
+  .header--main-tools .overlay-toggle-label{display:none!important}
+  .header--main-tools .overlay-toggle-btn{width:28px!important;min-width:28px!important;padding:0!important}
+  .header-action-btn{width:28px!important;min-width:28px!important;padding:0!important}
+}

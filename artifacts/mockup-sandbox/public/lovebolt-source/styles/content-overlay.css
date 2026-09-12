@@ -1,0 +1,19 @@
+/* Lovable GPT Connector - Content Overlay Styles */
+
+/* These styles are injected into ChatGPT pages */
+
+/* Push button hover effect on code blocks */
+pre:hover + .lc-push-btn-container .lc-push-btn,
+.lc-push-btn-container .lc-push-btn:focus {
+  opacity: 1 !important;
+}
+
+/* Ensure buttons appear correctly */
+.lc-push-btn-container {
+  position: relative;
+}
+
+.lc-push-btn-container .lc-push-btn {
+  position: relative;
+  z-index: 10;
+}

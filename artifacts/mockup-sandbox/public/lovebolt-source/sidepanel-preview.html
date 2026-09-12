@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>LoveBoltReplitGPT Studio — Preview</title>
+  <link rel="stylesheet" href="dual-panel.css">
+  <link rel="stylesheet" href="styles/windows-terminal-light.css">
+  <style>
+    html, body { width: 100%; height: 100%; }
+    body { min-width: 760px; }
+    .chat-stage { position: relative; }
+    .chat-stage > .chat-preview-frame {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #fff;
+    }
+  </style>
+</head>
+<body class="light">
+  <div class="dual-shell" id="dualShell">
+    <section class="dual-pane dual-pane--lovebolt" aria-label="Extensão LoveBoltReplitGPT">
+      <iframe id="loveboltFrame" class="pane-frame" src="lovebolt-panel.html" title="Extensão LoveBoltReplitGPT"></iframe>
+    </section>
+
+    <section class="dual-pane dual-pane--chatgpt" aria-label="ChatGPT">
+      <header class="pane-toolbar pane-toolbar--chatgpt">
+        <div class="pane-brand">
+          <div class="chatgpt-mark">◎</div>
+          <div class="pane-title-wrap">
+            <strong>ChatGPT</strong>
+            <span id="syncStatus">Conectado ao relay</span>
+          </div>
+        </div>
+        <div class="chat-actions topbar-actions">
+          <button class="topbar-action" type="button" title="Página inicial"><span>⌂</span><b>Início</b></button>
+          <button class="topbar-action" type="button" title="Recarregar"><span>↻</span><b>Atualizar</b></button>
+          <button class="topbar-action fullscreen-mode-btn" type="button" title="Tela cheia"><span>⛶</span><b>Tela Cheia</b></button>
+          <button class="topbar-action" type="button" title="Abrir em uma aba"><span>↗</span><b>Abrir</b></button>
+        </div>
+      </header>
+      <div class="chat-stage">
+        <iframe class="chat-preview-frame" src="chatgpt-preview.html" title="ChatGPT — preview local"></iframe>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

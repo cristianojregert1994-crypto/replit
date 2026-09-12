@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>LoveBoltReplitGPT Studio — Extensão + ChatGPT</title>
+  <link rel="stylesheet" href="dual-panel.css">
+  <link rel="stylesheet" href="styles/windows-terminal-light.css">
+</head>
+<body class="light">
+  <div class="dual-shell" id="dualShell">
+    <section class="dual-pane dual-pane--lovebolt" aria-label="Extensão LoveBoltReplitGPT">
+      <iframe id="loveboltFrame" class="pane-frame" src="lovebolt-panel.html" title="Extensão LoveBoltReplitGPT"></iframe>
+    </section>
+
+    <section class="dual-pane dual-pane--chatgpt" aria-label="ChatGPT">
+      <header class="pane-toolbar pane-toolbar--chatgpt">
+        <div class="pane-brand">
+          <div class="chatgpt-mark">◎</div>
+          <div class="pane-title-wrap">
+            <strong>ChatGPT</strong>
+            <span id="syncStatus">Conectando relay…</span>
+          </div>
+        </div>
+        <div class="chat-actions topbar-actions">
+          <button id="chatHomeBtn" class="topbar-action" type="button" title="Página inicial do ChatGPT" aria-label="Página inicial"><span>⌂</span><b>Início</b></button>
+          <button id="chatReloadBtn" class="topbar-action" type="button" title="Recarregar ChatGPT" aria-label="Recarregar"><span>↻</span><b>Atualizar</b></button>
+          <button id="fullscreenModeBtn" class="topbar-action fullscreen-mode-btn" type="button" title="Abrir a extensão ocupando a tela inteira" aria-label="Abrir extensão em tela cheia" aria-pressed="false"><span id="fullscreenModeIcon">⛶</span><b id="fullscreenModeLabel">Tela Cheia</b></button>
+          <button id="chatOpenTabBtn" class="topbar-action" type="button" title="Abrir ChatGPT em uma aba" aria-label="Abrir em uma aba"><span>↗</span><b>Abrir</b></button>
+        </div>
+      </header>
+      <div class="chat-stage">
+        <iframe id="chatFrame" class="pane-frame" src="https://chatgpt.com/" title="ChatGPT" allow="clipboard-read; clipboard-write; microphone; camera" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <div id="chatFallback" class="chat-fallback" hidden>
+          <strong>ChatGPT não carregou incorporado.</strong>
+          <span>Use ↗ para abrir sua sessão em uma aba normal.</span>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="dual-panel.js"></script>
+</body>
+</html>

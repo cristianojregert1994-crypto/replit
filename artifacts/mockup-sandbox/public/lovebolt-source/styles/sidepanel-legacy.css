@@ -1,0 +1,1003 @@
+/* Historical compatibility overrides isolated in v3.48.0. */
+/* ═══ v3.9.1 — COMMAND-ONLY CHAT PANEL ═══ */
+.chat-status-dot.connected {
+  background: var(--success);
+  box-shadow: 0 0 6px rgba(34,197,94,0.5);
+}
+.chat-history-label {
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 10px;
+  line-height: 1.35;
+  background: rgba(var(--accent-rgb),0.035);
+}
+.chat-history-item .chat-msg-content {
+  display: block;
+}
+.chat-history-text {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.chat-history-meta {
+  margin-top: 5px;
+  font-size: 9px;
+  line-height: 1.2;
+  opacity: 0.72;
+  text-align: right;
+}
+body.light .chat-history-label {
+  background: rgba(var(--accent-rgb),0.035);
+}
+
+/* ═══ v3.9.3 — UNIVERSAL PROMPT MODES + SENSITIVE WARNING ═══ */
+.prompt-preset-chip--sensitive {
+  border-color: rgba(245,158,11,0.42);
+  background: color-mix(in srgb, #f59e0b 7%, var(--bg-card));
+}
+.prompt-preset-chip--sensitive:hover {
+  border-color: #f59e0b;
+  color: #f59e0b;
+  background: color-mix(in srgb, #f59e0b 11%, var(--bg-card));
+  box-shadow: 0 4px 12px rgba(245,158,11,0.14);
+}
+.prompt-mode-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  background: rgba(4,6,12,0.72);
+  backdrop-filter: blur(4px);
+}
+.prompt-mode-dialog {
+  width: min(100%, 420px);
+  max-height: calc(100vh - 28px);
+  overflow-y: auto;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-card);
+  box-shadow: 0 22px 70px rgba(0,0,0,0.42);
+}
+.prompt-mode-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding-bottom: 11px;
+  border-bottom: 1px solid var(--border);
+}
+.prompt-mode-title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+.prompt-mode-eyebrow {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--text-muted);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.prompt-mode-title {
+  display: block;
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.prompt-mode-close {
+  width: 30px;
+  height: 30px;
+  flex: 0 0 30px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+.prompt-mode-close:hover {
+  color: var(--text);
+  background: var(--bg-card-hover);
+}
+.prompt-sensitive-warning {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 11px;
+  padding: 10px 11px;
+  border: 1px solid rgba(245,158,11,0.4);
+  border-radius: 10px;
+  background: rgba(245,158,11,0.09);
+}
+.prompt-sensitive-warning strong {
+  color: #f59e0b;
+  font-size: 11px;
+}
+.prompt-sensitive-warning span {
+  color: var(--text-secondary);
+  font-size: 10px;
+  line-height: 1.45;
+}
+.prompt-mode-question {
+  margin: 13px 0 9px;
+  color: var(--text);
+  font-size: 11px;
+  font-weight: 750;
+}
+.prompt-mode-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.prompt-mode-option {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px;
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  background: var(--bg);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+.prompt-mode-option:hover {
+  transform: translateY(-1px);
+  border-color: rgba(var(--accent-rgb),0.5);
+  background: var(--bg-card-hover);
+}
+.prompt-mode-option--analyze:hover { border-color: rgba(59,130,246,0.62); }
+.prompt-mode-option--analyze-fix:hover { border-color: rgba(34,197,94,0.62); }
+.prompt-mode-option--fix-no-visual:hover { border-color: rgba(var(--accent-bright-rgb),0.62); }
+.prompt-mode-icon {
+  width: 25px;
+  flex: 0 0 25px;
+  font-size: 18px;
+  line-height: 1.2;
+}
+.prompt-mode-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+.prompt-mode-copy strong {
+  color: var(--text);
+  font-size: 11px;
+}
+.prompt-mode-copy span {
+  color: var(--text-muted);
+  font-size: 9.5px;
+  line-height: 1.4;
+}
+.prompt-mode-footer {
+  margin-top: 11px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 9px;
+  line-height: 1.4;
+}
+body.light .prompt-mode-overlay {
+  background: rgba(15,23,42,0.45);
+}
+body.light .prompt-mode-dialog {
+  background: #ffffff;
+  box-shadow: 0 22px 60px rgba(15,23,42,0.22);
+}
+body.light .prompt-mode-option {
+  background: #f8f9fa;
+}
+
+/* ═══ v3.9.5 — COMPACT PANEL / CHAT ALWAYS VISIBLE ═══ */
+html, body {
+  height: 100%;
+  min-height: 0;
+}
+
+body {
+  height: 100vh;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.header {
+  flex: 0 0 auto;
+  padding: 8px 10px;
+}
+.header-logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  font-size: 10px;
+}
+.header-brand { gap: 7px; }
+.header-title { font-size: 13px; }
+
+.content {
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 8px;
+  gap: 8px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* O chat aparece antes da Integração, mesmo permanecendo no mesmo HTML. */
+#chatCard.card-chat {
+  order: -1;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  height: auto;
+  max-height: 218px;
+  flex: 0 0 auto;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.24);
+  backdrop-filter: blur(14px);
+}
+
+#chatCard .card-header {
+  padding: 7px 9px;
+}
+#chatCard .card-title-row { gap: 6px; }
+#chatCard .card-icon { font-size: 14px; }
+#chatCard .card-title { font-size: 12px; }
+#chatCard .chat-header-status { gap: 4px; }
+#chatCard .chat-status-text { font-size: 9.5px; }
+#chatCard .chat-status-dot { width: 6px; height: 6px; }
+
+#chatCard .chat-project-bar {
+  padding: 4px 9px;
+  font-size: 9.5px;
+}
+#chatCard .chat-project-repo {
+  font-size: 9px;
+  max-width: 115px;
+}
+#chatCard .chat-history-label {
+  padding: 4px 9px;
+  font-size: 8.5px;
+  line-height: 1.25;
+}
+
+/* Só o histórico rola; o campo de envio nunca sai da tela. */
+#chatCard .chat-messages {
+  flex: 0 1 82px;
+  min-height: 34px;
+  max-height: 82px;
+  overflow-y: auto;
+  padding: 5px 7px;
+  gap: 5px;
+}
+#chatCard .chat-msg-bubble,
+#chatCard .chat-history-text {
+  font-size: 10px;
+  line-height: 1.35;
+}
+#chatCard .chat-history-meta {
+  margin-top: 2px;
+  font-size: 8px;
+}
+
+#chatCard .chat-input-area {
+  position: relative;
+  flex: 0 0 auto;
+  padding: 6px 7px;
+  gap: 5px;
+}
+#chatCard .chat-input {
+  min-height: 32px;
+  max-height: 68px;
+  padding: 6px 8px;
+  border-radius: 7px;
+  font-size: 11px;
+  line-height: 1.3;
+}
+#chatCard .chat-send-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 7px;
+}
+#chatCard .chat-send-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Compactação geral sem esconder recursos. */
+.card { border-radius: 10px; }
+.card-header { padding: 10px 12px; }
+.card-body { padding: 0 12px 10px; }
+.connections-grid { margin: 7px 0; gap: 5px; }
+.connection-item { padding: 7px 9px; border-radius: 8px; }
+.connection-icon { font-size: 16px; }
+.connection-name { font-size: 11px; }
+.connection-detail { font-size: 9.5px; }
+.user-row { gap: 7px; }
+.avatar { width: 27px; height: 27px; }
+.user-name { font-size: 11px; }
+.user-detail { font-size: 9.5px; }
+.integration-prompts-section { margin-top: 8px; padding-top: 8px; }
+.prompt-shortcuts-btn { min-height: 34px; padding: 6px 9px; border-radius: 8px; }
+.projects-refresh-btn { width: 30px; height: 30px; flex-basis: 30px; border-radius: 8px; }
+.footer { flex: 0 0 auto; padding: 4px 10px; }
+.footer-version { font-size: 8.5px; }
+
+@media (max-height: 650px) {
+  #chatCard.card-chat { max-height: 190px; }
+  #chatCard .chat-messages { max-height: 58px; flex-basis: 58px; }
+  .header { padding: 6px 9px; }
+  .content { padding: 6px; gap: 6px; }
+}
+\n\n/* ═══════════════════════════════════════════════════════════════\n   v3.9.6 — PROMPTS NO TOPO + INTEGRAÇÃO 4 COLUNAS + CHAT ABAIXO\n   ═══════════════════════════════════════════════════════════════ */\n\n/* Fluxo explícito da página: Prompt → Integração → Chat. */\n#promptTopCard {\n  order: -30;\n  flex: 0 0 auto;\n  overflow: visible;\n  border-color: rgba(var(--accent-rgb),0.34);\n  background: linear-gradient(135deg, rgba(var(--accent-rgb),0.10), var(--bg-card));\n  box-shadow: 0 6px 20px rgba(0,0,0,0.12);\n}\n\n#integrationCard { order: -20; flex: 0 0 auto; }\n#chatCard.card-chat {\n  order: -10;\n  position: relative;\n  top: auto;\n  z-index: 3;\n  max-height: 210px;\n  box-shadow: none;\n}\n\n.prompt-top-card .prompt-shortcuts-wrap { margin: 0; }\n.prompt-shortcuts-btn--top {\n  width: 100%;\n  min-height: 42px;\n  border: 0;\n  border-radius: 10px;\n  padding: 8px 11px;\n  background: transparent;\n}\n.prompt-shortcuts-btn--top .prompt-shortcuts-icon {\n  flex: 0 0 auto;\n  font-size: 16px;\n}\n.prompt-shortcuts-btn--top .prompt-shortcuts-btn-main {\n  flex: 1 1 auto;\n  text-align: left;\n  font-size: 12px;\n  font-weight: 700;\n}\n#promptTopCard .prompt-shortcuts-panel {\n  margin: 0 7px 7px;\n  max-height: min(66vh, 520px);\n  overflow: hidden;\n}\n#promptTopCard .prompt-shortcuts-content {\n  max-height: min(56vh, 440px);\n  overflow-y: auto;\n}\n\n/* Integração visual em quatro indicadores lado a lado. */\n#integrationCard .card-header { padding: 8px 10px 6px; }\n#integrationCard .card-body { padding: 0 9px 8px; }\n#integrationCard .user-row {\n  margin-bottom: 5px;\n  padding-bottom: 5px;\n}\n#integrationCard .connections-grid {\n  display: grid;\n  grid-template-columns: repeat(4, minmax(0, 1fr));\n  gap: 5px;\n  margin: 6px 0;\n}\n#integrationCard .connection-item {\n  min-width: 0;\n  min-height: 66px;\n  padding: 7px 4px 6px;\n  border-radius: 9px;\n  flex-direction: column;\n  align-items: center;\n  justify-content: flex-start;\n  gap: 3px;\n  text-align: center;\n  position: relative;\n}\n#integrationCard .connection-icon {\n  font-size: 18px;\n  line-height: 1;\n  margin: 0;\n}\n#integrationCard .connection-info {\n  width: 100%;\n  min-width: 0;\n  gap: 1px;\n  align-items: center;\n}\n#integrationCard .connection-name {\n  display: block;\n  width: 100%;\n  font-size: 9.5px;\n  font-weight: 700;\n  line-height: 1.15;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n#integrationCard .connection-detail {\n  display: block;\n  width: 100%;\n  max-width: 100%;\n  font-size: 7.8px;\n  line-height: 1.2;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n#integrationCard .connection-check {\n  position: absolute;\n  top: 4px;\n  right: 5px;\n  font-size: 9px;\n}\n#integrationCard .connection-spinner {\n  position: absolute;\n  top: 4px;\n  right: 5px;\n}\n#integrationCard .connection-toggle {\n  position: absolute;\n  right: 4px;\n  bottom: 2px;\n  font-size: 11px;\n}\n#projectConnItem { cursor: pointer; }\n#projectConnItem:hover { background: var(--bg-card-hover); }\n\n/* O seletor detalhado de projetos continua, mas visualmente secundário. */\n#integrationCard .projects-section { margin-top: 5px; }\n#integrationCard .projects-toggle-btn { min-height: 28px; padding: 5px 8px; font-size: 9.5px; }\n#integrationCard .projects-refresh-btn { width: 28px; height: 28px; flex-basis: 28px; }\n\n/* Chat vem imediatamente após integração e continua compacto. */\n#chatCard .chat-messages { max-height: 62px; flex-basis: 62px; }\n#chatCard .chat-input { max-height: 60px; }\n\n/* A antiga seção interna de prompts não existe mais. */\n.integration-prompts-section { display: none !important; }\n\n@media (max-width: 330px) {\n  #integrationCard .connections-grid { gap: 3px; }\n  #integrationCard .connection-item { padding-left: 2px; padding-right: 2px; min-height: 62px; }\n  #integrationCard .connection-name { font-size: 8.8px; }\n  #integrationCard .connection-detail { font-size: 7.2px; }\n}\n
+/* Evita duplicar informações que já estão nos quatro indicadores. */
+#integrationCard #autoDetectSection,
+#integrationCard .user-row { display: none !important; }
+
+/* ═══════════════════════════════════════════════════════════════
+   v3.9.7 — ROLAGEM VERTICAL DO PAINEL ATIVADA
+   O documento inteiro rola; nenhuma seção fica presa em um
+   container de altura fixa. Prompts → Integração → Chat é mantido.
+   ═══════════════════════════════════════════════════════════════ */
+html {
+  height: auto !important;
+  min-height: 100% !important;
+  overflow-x: hidden !important;
+  overflow-y: scroll !important;
+  scrollbar-gutter: stable;
+}
+
+body {
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
+}
+
+.content {
+  flex: 0 0 auto !important;
+  min-height: auto !important;
+  overflow: visible !important;
+  overscroll-behavior-y: auto;
+}
+
+/* Barra de rolagem mais fácil de enxergar/usar no painel lateral. */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 7px;
+}
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background: rgba(161,161,170,0.32);
+  border-radius: 999px;
+}
+html::-webkit-scrollbar-thumb:hover,
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(161,161,170,0.52);
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   v3.10.0 — BARRA DE FERRAMENTAS + INTEGRAÇÃO RECOLHÍVEL
+   Atalhos/Integração no topo; o Chat ocupa todo o espaço restante.
+   ═══════════════════════════════════════════════════════════════ */
+html,
+body {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+
+body {
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.header,
+.footer {
+  flex: 0 0 auto !important;
+}
+
+.content {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 7px !important;
+  padding: 7px !important;
+  overflow: hidden !important;
+}
+
+/* Barra superior: Atalhos + Integração permanecem sempre acessíveis. */
+#promptTopCard {
+  order: -30 !important;
+  flex: 0 0 auto !important;
+  overflow: visible !important;
+  border-color: rgba(var(--accent-rgb),0.30) !important;
+  box-shadow: none !important;
+}
+
+#promptTopCard .prompt-shortcuts-wrap {
+  width: 100%;
+  margin: 0;
+}
+
+.top-tools-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 6px;
+  padding: 6px;
+}
+
+.top-tool-btn {
+  min-width: 0;
+  min-height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--bg);
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: 10.5px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background .18s ease, color .18s ease, border-color .18s ease;
+}
+
+.top-tool-btn:hover,
+.top-tool-btn.open {
+  color: var(--text);
+  border-color: rgba(var(--accent-rgb),0.42);
+  background: var(--accent-light);
+}
+
+.prompt-shortcuts-btn--top {
+  width: 100% !important;
+  min-height: 38px !important;
+  padding: 7px 8px !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 9px !important;
+  background: var(--bg) !important;
+}
+
+.prompt-shortcuts-btn--top:hover,
+.prompt-shortcuts-btn--top.open {
+  border-color: rgba(var(--accent-rgb),0.42) !important;
+  background: var(--accent-light) !important;
+}
+
+.prompt-shortcuts-btn--top .prompt-shortcuts-btn-main {
+  font-size: 10.5px !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.prompt-shortcuts-btn--top .prompt-shortcuts-count {
+  flex: 0 0 auto;
+}
+
+.integration-toggle-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 8px;
+}
+
+.integration-toggle-icon,
+.integration-toggle-arrow {
+  flex: 0 0 auto;
+}
+
+.integration-toggle-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.integration-toggle-arrow {
+  font-size: 12px;
+  color: var(--text-muted);
+  transition: transform .18s ease;
+}
+
+.integration-toggle-btn.is-collapsed .integration-toggle-arrow {
+  transform: rotate(180deg);
+}
+
+/* Atalhos abrem abaixo da barra e ocupam só uma parte da altura. */
+#promptTopCard .prompt-shortcuts-panel {
+  margin: 0 6px 6px !important;
+  max-height: min(43vh, 460px) !important;
+  overflow: hidden !important;
+}
+
+#promptTopCard .prompt-shortcuts-content {
+  max-height: min(35vh, 380px) !important;
+  overflow-y: auto !important;
+}
+
+/* Integração pode sumir completamente sem destruir seu estado interno. */
+#integrationCard {
+  order: -20 !important;
+  flex: 0 0 auto !important;
+  max-height: min(43vh, 430px) !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+}
+
+#integrationCard.integration-collapsed {
+  display: none !important;
+}
+
+/* O Chat é agora a área principal e cresce com todo o espaço disponível. */
+#chatCard.card-chat {
+  order: -10 !important;
+  position: relative !important;
+  top: auto !important;
+  z-index: 3 !important;
+  flex: 1 1 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: hidden !important;
+  box-shadow: none !important;
+}
+
+#chatCard .card-header,
+#chatCard .chat-project-bar,
+#chatCard .chat-history-label,
+#chatCard .chat-input-area {
+  flex: 0 0 auto !important;
+}
+
+#chatCard .chat-messages {
+  flex: 1 1 auto !important;
+  flex-basis: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  padding: 8px 9px !important;
+}
+
+#chatCard .chat-input-area {
+  position: relative !important;
+  margin-top: auto;
+  padding: 7px 8px !important;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+}
+
+#chatCard .chat-input {
+  max-height: 110px !important;
+}
+
+/* Footer discreto para entregar o máximo de área útil ao Chat. */
+.footer {
+  padding: 3px 8px !important;
+}
+
+@media (max-width: 340px) {
+  .top-tools-row { gap: 4px; padding: 5px; }
+  .top-tool-btn,
+  .prompt-shortcuts-btn--top .prompt-shortcuts-btn-main { font-size: 9.5px !important; }
+  .integration-toggle-btn { gap: 4px; padding-left: 5px; padding-right: 5px; }
+}
+
+@media (max-height: 600px) {
+  #integrationCard { max-height: 38vh !important; }
+  #promptTopCard .prompt-shortcuts-panel { max-height: 38vh !important; }
+  #promptTopCard .prompt-shortcuts-content { max-height: 29vh !important; }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   v3.13.1 — DUAL ROUTE: CHAT OFICIAL x CHAT GITHUB
+   ═══════════════════════════════════════════════════════════════ */
+#chatCard .chat-input-area {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  gap: 6px !important;
+}
+#chatCard .chat-input { width: 100% !important; }
+.chat-route-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.chat-route-btn {
+  min-width: 0;
+  min-height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-family: inherit;
+  font-size: 9.5px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: transform .15s, border-color .15s, background .15s;
+}
+.chat-route-btn:hover { transform: translateY(-1px); }
+.chat-route-btn:disabled { opacity: .45; cursor: wait; transform: none; }
+.chat-route-btn--official {
+  background: rgba(245,158,11,.08);
+  border-color: rgba(245,158,11,.35);
+  color: #f59e0b;
+}
+.chat-route-btn--official:hover { background: rgba(245,158,11,.15); border-color: rgba(245,158,11,.62); }
+.chat-route-btn--github {
+  background: rgba(34,197,94,.08);
+  border-color: rgba(34,197,94,.35);
+  color: #22c55e;
+}
+.chat-route-btn--github:hover { background: rgba(34,197,94,.15); border-color: rgba(34,197,94,.62); }
+.chat-route-icon { font-size: 12px; line-height: 1; }
+.chat-history-route {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 4px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .15px;
+}
+.chat-history-route--official { color: #f59e0b; background: rgba(245,158,11,.11); }
+.chat-history-route--github { color: #22c55e; background: rgba(34,197,94,.11); }
+.prompt-route-option--official { border-color: rgba(245,158,11,.3); }
+.prompt-route-option--official:hover { border-color: rgba(245,158,11,.72); }
+.prompt-route-option--github { border-color: rgba(34,197,94,.3); }
+.prompt-route-option--github:hover { border-color: rgba(34,197,94,.72); }
+body.light .chat-route-btn--official { color: #b45309; background: #fff7ed; }
+body.light .chat-route-btn--github { color: #15803d; background: #f0fdf4; }
+@media (max-width: 315px) {
+  .chat-route-btn { font-size: 8.7px; padding-left: 5px; padding-right: 5px; }
+  .chat-route-icon { font-size: 10px; }
+}
+
+/* v3.13.1 — feedback imediato de envio */
+.chat-history-meta--sending { opacity: .85; font-style: italic; }
+.chat-history-meta--error { color: var(--error, #ef4444) !important; }
+.chat-route-btn.is-sending { filter: saturate(.85); }
+
+/* ═══════════════════════════════════════════════════════════════
+   v3.13.2 — CAMPO DE TEXTO DO CHAT AMPLIADO
+   ═══════════════════════════════════════════════════════════════ */
+#chatCard .chat-input {
+  min-height: 120px !important;
+  height: 120px;
+  max-height: 260px !important;
+  padding: 12px 13px !important;
+  font-size: 12.5px !important;
+  line-height: 1.5 !important;
+  resize: vertical !important;
+}
+
+@media (max-height: 650px) {
+  #chatCard .chat-input {
+    min-height: 96px !important;
+    height: 96px;
+    max-height: 200px !important;
+  }
+}
+
+/* ===== GITHUB REPOSITORY VERIFICATION + MANUAL BINDING (v3.15.0) ===== */
+.repo-binding-panel {
+  margin: 8px 10px 2px; padding: 10px; border: 1px solid var(--border); border-radius: 10px;
+  background: rgba(255,255,255,0.025); display: flex; flex-direction: column; gap: 8px;
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   v3.28.0 — SIDEBAR RESPONSIVA / CHAT SEM CORTE
+   ResizeObserver aplica lb-h-* e lb-w-* em tempo real.
+   Esta camada vem por último e neutraliza alturas fixas legadas.
+   ═══════════════════════════════════════════════════════════════ */
+html,
+body {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+}
+body {
+  display: flex !important;
+  flex-direction: column !important;
+}
+.header,
+.footer {
+  flex: 0 0 auto !important;
+}
+.content {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: var(--lb-content-h, auto) !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+#promptTopCard,
+#integrationCard {
+  flex: 0 0 auto !important;
+  min-width: 0 !important;
+}
+#chatCard.card-chat {
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: hidden !important;
+}
+#chatCard .lovebolt-chat-shell {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+#chatCard .lovebolt-chat-topbar,
+#chatCard .lovebolt-chat-pills,
+#chatCard .lovebolt-chat-divider,
+#chatCard .lovebolt-chat-route-copy,
+#chatCard .lovebolt-chat-project,
+#chatCard .lovebolt-chat-composer-wrap {
+  flex: 0 0 auto !important;
+}
+#chatCard .lovebolt-chat-messages {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+}
+#chatCard .lovebolt-history-panel:not([hidden]) {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  max-height: min(42vh, 280px) !important;
+  overflow: hidden !important;
+}
+#chatCard .lovebolt-history-list {
+  max-height: none !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+}
+#chatCard .lovebolt-chat-input {
+  resize: none !important;
+  min-height: clamp(52px, 12vh, 110px) !important;
+  height: clamp(52px, 12vh, 110px) !important;
+  max-height: clamp(72px, 18vh, 150px) !important;
+}
+
+/* Confortável: usa espaço disponível, sem forçar altura fixa. */
+body.lb-h-comfy .content { gap: 7px !important; padding: 7px !important; }
+body.lb-h-comfy #integrationCard { max-height: min(31vh, 250px) !important; overflow-y: auto !important; }
+body.lb-h-comfy #chatCard .lovebolt-chat-shell { padding: 14px !important; gap: 9px !important; }
+body.lb-h-comfy #chatCard .lovebolt-chat-input { min-height: 92px !important; height: 92px !important; }
+
+/* Compacta: reduz espaçamento, mantendo todo o fluxo. */
+body.lb-h-compact .header { padding: 6px 9px !important; }
+body.lb-h-compact .content { gap: 5px !important; padding: 5px !important; }
+body.lb-h-compact .footer { padding: 2px 7px !important; }
+body.lb-h-compact .top-tools-row { padding: 4px !important; gap: 4px !important; }
+body.lb-h-compact .top-tool-btn,
+body.lb-h-compact .prompt-shortcuts-btn--top { min-height: 32px !important; }
+body.lb-h-compact #integrationCard { max-height: min(24vh, 165px) !important; overflow-y: auto !important; }
+body.lb-h-compact #integrationCard .card-header { padding: 5px 8px 4px !important; }
+body.lb-h-compact #integrationCard .card-body { padding: 0 7px 6px !important; }
+body.lb-h-compact #integrationCard .connection-item { min-height: 48px !important; padding: 4px 3px !important; }
+body.lb-h-compact #integrationCard .connection-icon { font-size: 14px !important; }
+body.lb-h-compact #chatCard .lovebolt-chat-shell { padding: 10px !important; gap: 6px !important; }
+body.lb-h-compact #chatCard .lovebolt-chat-pills { gap: 4px !important; }
+body.lb-h-compact #chatCard .lovebolt-pill { min-height: 26px !important; padding: 5px 7px !important; font-size: 9px !important; }
+body.lb-h-compact #chatCard .lovebolt-chat-input { min-height: 64px !important; height: 64px !important; max-height: 86px !important; }
+body.lb-h-compact #chatCard .lovebolt-chat-composer { padding: 9px !important; }
+body.lb-h-compact #chatCard .lovebolt-chat-footer-row { gap: 6px !important; }
+
+/* Apertada: preserva funções e comprime conteúdo descritivo. */
+body.lb-h-tight .header { padding: 4px 7px !important; }
+body.lb-h-tight .header-logo { width: 21px !important; height: 21px !important; }
+body.lb-h-tight .header-title { font-size: 11.5px !important; }
+body.lb-h-tight .content { gap: 4px !important; padding: 4px !important; }
+body.lb-h-tight .footer { padding: 1px 6px !important; }
+body.lb-h-tight .top-tools-row { padding: 3px !important; gap: 3px !important; }
+body.lb-h-tight .top-tool-btn,
+body.lb-h-tight .prompt-shortcuts-btn--top { min-height: 28px !important; padding-top: 4px !important; padding-bottom: 4px !important; }
+body.lb-h-tight #integrationCard { max-height: 112px !important; overflow-y: auto !important; }
+body.lb-h-tight #integrationCard .card-header { padding: 4px 6px 3px !important; }
+body.lb-h-tight #integrationCard .card-body { padding: 0 5px 4px !important; }
+body.lb-h-tight #integrationCard .connections-grid { gap: 3px !important; margin: 3px 0 !important; }
+body.lb-h-tight #integrationCard .connection-item { min-height: 40px !important; padding: 3px 2px !important; }
+body.lb-h-tight #integrationCard .connection-icon { font-size: 12px !important; }
+body.lb-h-tight #integrationCard .connection-name { font-size: 8.2px !important; }
+body.lb-h-tight #integrationCard .connection-detail { font-size: 6.8px !important; }
+body.lb-h-tight #chatCard .lovebolt-chat-shell { padding: 7px !important; gap: 4px !important; border-radius: 12px !important; }
+body.lb-h-tight #chatCard .lovebolt-chat-infinity { font-size: 23px !important; }
+body.lb-h-tight #chatCard .lovebolt-chat-brand-title { font-size: 14px !important; }
+body.lb-h-tight #chatCard .lovebolt-chat-brand-subtitle,
+body.lb-h-tight #chatCard .lovebolt-chat-route-subtitle,
+body.lb-h-tight #chatCard .lovebolt-chat-footer-copy { display: none !important; }
+body.lb-h-tight #chatCard .lovebolt-chat-pills { gap: 3px !important; }
+body.lb-h-tight #chatCard .lovebolt-pill { min-height: 22px !important; padding: 3px 6px !important; font-size: 8px !important; }
+body.lb-h-tight #chatCard .lovebolt-chat-route-title { font-size: 10px !important; }
+body.lb-h-tight #chatCard .lovebolt-chat-project { padding: 4px 6px !important; font-size: 8.5px !important; }
+body.lb-h-tight #chatCard .lovebolt-chat-composer { padding: 6px !important; border-radius: 12px !important; }
+body.lb-h-tight #chatCard .lovebolt-chat-input { min-height: 48px !important; height: 48px !important; max-height: 64px !important; padding-bottom: 4px !important; }
+body.lb-h-tight #chatCard .lovebolt-chat-toolbar { gap: 4px !important; }
+body.lb-h-tight #chatCard .lovebolt-attach-btn { width: 30px !important; height: 30px !important; }
+body.lb-h-tight #chatCard .lovebolt-send-btn { width: 34px !important; height: 34px !important; font-size: 18px !important; }
+body.lb-h-tight #chatCard .lovebolt-route-actions .chat-route-btn { min-height: 30px !important; font-size: 9px !important; padding: 0 7px !important; }
+body.lb-h-tight #chatCard .lovebolt-history-btn { min-height: 28px !important; padding: 0 7px !important; font-size: 9px !important; }
+
+/* Micro: usado quando a sidebar fica muito baixa. Nunca corta o composer. */
+body.lb-h-micro .header { padding: 3px 6px !important; }
+body.lb-h-micro .header-logo { width: 19px !important; height: 19px !important; font-size: 8px !important; }
+body.lb-h-micro .header-title { font-size: 10.5px !important; }
+body.lb-h-micro .theme-toggle,
+body.lb-h-micro .icon-btn { padding: 3px !important; }
+body.lb-h-micro .content { gap: 3px !important; padding: 3px !important; }
+body.lb-h-micro .footer { display: none !important; }
+body.lb-h-micro .top-tools-row { padding: 2px !important; gap: 2px !important; }
+body.lb-h-micro .top-tool-btn,
+body.lb-h-micro .prompt-shortcuts-btn--top { min-height: 25px !important; font-size: 8.5px !important; padding: 2px 4px !important; }
+body.lb-h-micro #integrationCard { max-height: 76px !important; overflow-y: auto !important; }
+body.lb-h-micro #integrationCard .card-header { padding: 3px 5px 2px !important; }
+body.lb-h-micro #integrationCard .card-title { font-size: 9px !important; }
+body.lb-h-micro #integrationCard .card-body { padding: 0 4px 3px !important; }
+body.lb-h-micro #integrationCard .connections-grid { gap: 2px !important; margin: 2px 0 !important; }
+body.lb-h-micro #integrationCard .connection-item { min-height: 30px !important; padding: 2px 1px !important; }
+body.lb-h-micro #integrationCard .connection-icon { font-size: 10px !important; }
+body.lb-h-micro #integrationCard .connection-name { font-size: 7px !important; }
+body.lb-h-micro #integrationCard .connection-detail,
+body.lb-h-micro #integrationCard .connection-toggle { display: none !important; }
+body.lb-h-micro #chatCard .lovebolt-chat-shell { padding: 5px !important; gap: 3px !important; border-radius: 10px !important; }
+body.lb-h-micro #chatCard .lovebolt-chat-infinity { font-size: 19px !important; }
+body.lb-h-micro #chatCard .lovebolt-chat-brand-title { font-size: 12px !important; }
+body.lb-h-micro #chatCard .lovebolt-chat-brand-subtitle,
+body.lb-h-micro #chatCard .lovebolt-chat-pills,
+body.lb-h-micro #chatCard .lovebolt-chat-route-copy,
+body.lb-h-micro #chatCard .lovebolt-chat-project,
+body.lb-h-micro #chatCard .lovebolt-chat-footer-copy { display: none !important; }
+body.lb-h-micro #chatCard .lovebolt-history-btn { min-height: 25px !important; padding: 0 6px !important; font-size: 8px !important; }
+body.lb-h-micro #chatCard .lovebolt-history-btn span:nth-child(2) { display: none !important; }
+body.lb-h-micro #chatCard .lovebolt-chat-messages { min-height: 0 !important; padding: 2px !important; }
+body.lb-h-micro #chatCard .chat-empty { min-height: 0 !important; padding: 4px !important; }
+body.lb-h-micro #chatCard .chat-empty-hint { display: none !important; }
+body.lb-h-micro #chatCard .lovebolt-chat-composer { padding: 4px !important; border-radius: 9px !important; }
+body.lb-h-micro #chatCard .lovebolt-chat-input { min-height: 38px !important; height: 38px !important; max-height: 44px !important; padding: 0 2px 2px !important; font-size: 10px !important; }
+body.lb-h-micro #chatCard .lovebolt-chat-toolbar { gap: 3px !important; }
+body.lb-h-micro #chatCard .lovebolt-attach-btn { width: 26px !important; height: 26px !important; }
+body.lb-h-micro #chatCard .lovebolt-send-btn { width: 30px !important; height: 30px !important; font-size: 16px !important; }
+body.lb-h-micro #chatCard .lovebolt-route-actions { gap: 3px !important; }
+body.lb-h-micro #chatCard .lovebolt-route-actions .chat-route-btn { min-height: 27px !important; padding: 0 4px !important; font-size: 8px !important; }
+body.lb-h-micro #chatCard .lovebolt-chat-footer-row { display: none !important; }
+body.lb-h-micro #chatCard .lovebolt-history-panel:not([hidden]) {
+  position: absolute !important;
+  inset: 36px 5px 5px !important;
+  z-index: 20 !important;
+  max-height: none !important;
+  background: var(--bg-card) !important;
+}
+
+/* Largura responsiva: nada ultrapassa a sidebar ao arrastar horizontalmente. */
+body.lb-w-compact #integrationCard .connections-grid { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+body.lb-w-compact #chatCard .lovebolt-route-actions .chat-route-btn { font-size: 8.7px !important; padding-left: 5px !important; padding-right: 5px !important; }
+body.lb-w-narrow .header-title { font-size: 10.5px !important; }
+body.lb-w-narrow #integrationCard .connections-grid { grid-template-columns: repeat(2, minmax(0,1fr)) !important; }
+body.lb-w-narrow #chatCard .lovebolt-chat-brand-subtitle,
+body.lb-w-narrow #chatCard .lovebolt-chat-footer-copy { display: none !important; }
+body.lb-w-narrow #chatCard .lovebolt-chat-toolbar { gap: 3px !important; }
+body.lb-w-narrow #chatCard .lovebolt-route-actions { gap: 3px !important; }
+body.lb-w-narrow #chatCard .lovebolt-route-actions .chat-route-btn { font-size: 7.8px !important; padding: 0 3px !important; }
+body.lb-w-narrow #chatCard .chat-route-icon { font-size: 9px !important; }
+body.lb-w-narrow #chatCard .lovebolt-attach-btn { width: 28px !important; height: 28px !important; }
+body.lb-w-narrow #chatCard .lovebolt-send-btn { width: 32px !important; height: 32px !important; }
+
+/* A borda LED continua ocupando 100% da extensão em qualquer tamanho. */
+body::after {
+  inset: 1px !important;
+  border-radius: clamp(5px, 1.5vw, 10px) !important;
+}
+
+
+/* v3.29 — rolagem vertical da sidebar inteira: nunca corta o composer. */
+html, body {
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior-y: contain;
+  scrollbar-gutter: stable;
+}
+body { display: block !important; min-height: 100vh !important; }
+.content {
+  height: auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+#chatCard.card-chat {
+  flex: 0 0 auto !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+#chatCard .lovebolt-chat-shell {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+}
+#chatCard .lovebolt-chat-messages:empty { display: none !important; }
+#chatCard .lovebolt-chat-messages:not(:empty) {
+  display: flex !important;
+  flex: 0 0 auto !important;
+  min-height: 0 !important;
+  max-height: min(32vh, 220px) !important;
+  overflow-y: auto !important;
+}
+#chatCard .lovebolt-history-panel:not([hidden]) {
+  position: relative !important;
+  inset: auto !important;
+  flex: 0 0 auto !important;
+  max-height: min(48vh, 340px) !important;
+  overflow: hidden !important;
+}
+body.lb-h-tight .content,
+body.lb-h-micro .content { overflow: visible !important; }
+body.lb-h-micro #chatCard .lovebolt-history-panel:not([hidden]) {
+  position: relative !important;
+  inset: auto !important;
+  z-index: auto !important;
+  max-height: min(52vh, 320px) !important;
+}
+
+
+/* ═══ pills sempre lado a lado + controle do bloqueio nativo ═══ */
+.overlay-toggle-btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-width:74px;height:32px;padding:0 8px;border:1px solid var(--border);border-radius:9px;background:var(--bg-card);color:var(--text-secondary);font:700 9px/1 inherit;cursor:pointer;white-space:nowrap;transition:border-color .15s ease,background .15s ease,color .15s ease,box-shadow .15s ease}.overlay-toggle-btn:hover{border-color:rgba(var(--accent-rgb),.38);background:var(--bg-card-hover);color:var(--text)}.overlay-toggle-btn.is-on{border-color:rgba(var(--accent-rgb),.52);background:rgba(var(--accent-rgb),.12);color:var(--accent-bright);box-shadow:0 0 10px rgba(var(--accent-rgb),.10)}.overlay-toggle-btn.is-off{border-color:rgba(239,68,68,.34);background:rgba(239,68,68,.08);color:#f87171}.overlay-toggle-icon{font-size:11px}.overlay-toggle-label{overflow:hidden;text-overflow:ellipsis}.lovebolt-chat-pills{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:5px!important;flex-wrap:nowrap!important;width:100%!important;min-width:0!important}.lovebolt-chat-pills .lovebolt-pill{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-width:0!important;width:100%!important;min-height:30px!important;margin:0!important;padding:5px 6px!important;gap:5px!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;font-size:clamp(5.8px,2.2vw,10.5px)!important}.lovebolt-chat-pills .lovebolt-pill-dot{flex:0 0 auto!important;width:8px!important;height:8px!important}@media(max-width:340px){.overlay-toggle-btn{min-width:32px;width:32px;padding:0}.overlay-toggle-label{display:none}.lovebolt-chat-pills{gap:3px!important}.lovebolt-chat-pills .lovebolt-pill{padding:4px 3px!important;gap:3px!important;font-size:5.8px!important}.lovebolt-chat-pills .lovebolt-pill-dot{width:6px!important;height:6px!important}}body.lb-h-micro #chatCard .lovebolt-chat-pills{display:grid!important}body.lb-h-micro #chatCard .lovebolt-chat-pills{grid-template-columns:repeat(3,minmax(0,1fr))!important}body.lb-h-micro #chatCard .lovebolt-chat-pills .lovebolt-pill{display:inline-flex!important}
+
+
+/* v3.31.0 robot mascots logo */
+.header-logo{overflow:hidden;padding:0!important;background:rgba(255,255,255,0.04)!important;border:1px solid rgba(var(--accent-rgb),0.30)!important;box-shadow:0 0 10px rgba(var(--accent-rgb),0.16)!important}.header-logo img{display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit}.light .header-logo{background:#fff!important}
+
+
+/* v3.32.0 — identidade LoveBolt com mascote */
+.header-logo{width:42px!important;height:42px!important;flex:0 0 42px!important;background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important}
+.header-logo img{width:100%!important;height:100%!important;object-fit:contain!important;border-radius:0!important;filter:drop-shadow(0 0 7px rgba(var(--accent-rgb),.28))}
+.brand-title-block{display:flex;flex-direction:column;gap:1px;min-width:0}
+.header-title--lovebolt{font-size:16px!important;line-height:1!important;letter-spacing:-.045em!important;font-weight:900!important;white-space:nowrap}
+.brand-love{color:#8b5cf6!important}.brand-bolt{color:#3b82f6!important}.brand-replit{color:#f97316!important}.header-brand-subtitle{margin-top:3px;font-size:9px;line-height:1.1;color:var(--text-secondary);font-weight:600;letter-spacing:.04em}
+body.light .brand-love{color:#6d28d9!important}body.light .brand-bolt{color:#2563eb!important}body.light .brand-replit{color:#ea580c!important}
+body.lb-h-tight .header-logo{width:30px!important;height:30px!important;flex-basis:30px!important}body.lb-h-micro .header-logo{width:26px!important;height:26px!important;flex-basis:26px!important}body.lb-h-tight .header-title--lovebolt{font-size:14px!important}body.lb-h-micro .header-title--lovebolt{font-size:12px!important}body.lb-h-micro .header-brand-subtitle{font-size:7px!important}

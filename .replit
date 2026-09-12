@@ -1,3 +1,8 @@
+modules = ["nodejs-24"]
 [nix]
 channel = "stable-25_05"
 packages = ["unar"]
+
+[[ports]]
+localPort = 5000
+externalPort = 80

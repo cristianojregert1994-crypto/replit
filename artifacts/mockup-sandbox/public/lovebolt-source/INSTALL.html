@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Instalar LoveBoltReplit — GPT Connector - Gerar Ícones</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0a0a0f;
+      color: #e8e8ed;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+    .container { max-width: 600px; width: 100%; }
+    h1 { color: #7c3aed; margin-bottom: 8px; font-size: 24px; }
+    .subtitle { color: #8b8b9e; margin-bottom: 30px; }
+    .step {
+      background: #12121a;
+      border: 1px solid #22222d;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    .step-num {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      background: #7c3aed;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 28px;
+      font-weight: bold;
+      font-size: 14px;
+      margin-right: 10px;
+    }
+    .step h2 {
+      display: inline;
+      font-size: 16px;
+    }
+    .step p { color: #8b8b9e; margin-top: 10px; font-size: 14px; }
+    .icon-grid {
+      display: flex;
+      gap: 20px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+    .icon-item {
+      text-align: center;
+    }
+    .icon-item canvas {
+      border: 1px solid #333;
+      border-radius: 8px;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .icon-item a {
+      color: #a78bfa;
+      font-size: 12px;
+      text-decoration: none;
+    }
+    .icon-item a:hover { text-decoration: underline; }
+    .code {
+      background: #0e0e16;
+      border: 1px solid #22222d;
+      border-radius: 6px;
+      padding: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: #a78bfa;
+      overflow-x: auto;
+      margin-top: 10px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #7c3aed;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn:hover { background: #6d28d9; }
+    .check { color: #22c55e; }
+    .warning { color: #f59e0b; font-size: 13px; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 LoveBoltReplit — GPT Connector</h1>
+    <p class="subtitle">Siga os passos abaixo para instalar a extensão</p>
+    
+    <div class="step">
+      <span class="step-num">1</span>
+      <h2>Baixe os Ícones</h2>
+      <p>Clique nos links abaixo para baixar cada ícone:</p>
+      <div class="icon-grid" id="iconGrid"></div>
+      <p class="warning">⚠️ Salve os arquivos na pasta <strong>icons/</strong> da extensão</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-num">2</span>
+      <h2>Abra as Extensões do Chrome</h2>
+      <p>Cole esta URL na barra de endereços:</p>
+      <div class="code">chrome://extensions/</div>
+    </div>
+    
+    <div class="step">
+      <span class="step-num">3</span>
+      <h2>Ative o Modo Desenvolvedor</h2>
+      <p>No canto superior direito, ative o toggle "Modo Desenvolvedor"</p>
+    </div>
+    
+    <div class="step">
+      <span class="step-num">4</span>
+      <h2>Carregue a Extensão</h2>
+      <p>Clique em "Carregar extensão compactada" e selecione a pasta:</p>
+      <div class="code">C:\Users\PC\Desktop\lovable-gpt-connector</div>
+    </div>
+    
+    <div class="step">
+      <span class="step-num">5</span>
+      <h2>Configure</h2>
+      <p>Clique no ícone da extensão → ⚙️ e configure suas chaves de API</p>
+    </div>
+    
+    <p class="check" id="status">⏳ Aguardando download dos ícones...</p>
+  </div>
+
+  <script>
+    const sizes = [16, 48, 128];
+    const grid = document.getElementById('iconGrid');
+    let downloaded = 0;
+
+    function crc32(buf) {
+      let c = 0xFFFFFFFF;
+      for (let i = 0; i < buf.length; i++) {
+        c ^= buf[i];
+        for (let j = 0; j < 8; j++) {
+          c = (c & 1) ? ((c >>> 1) ^ 0xEDB88320) : (c >>> 1);
+        }
+      }
+      return (c ^ 0xFFFFFFFF) >>> 0;
+    }
+
+    function makeChunk(type, data) {
+      const len = new Uint8Array(4);
+      new DataView(len.buffer).setUint32(0, data.length);
+      
+      const typeBuf = new TextEncoder().encode(type);
+      const crcData = new Uint8Array(typeBuf.length + data.length);
+      crcData.set(typeBuf);
+      crcData.set(data, typeBuf.length);
+      
+      const crc = crc32(crcData);
+      const crcBuf = new Uint8Array(4);
+      new DataView(crcBuf.buffer).setUint32(0, crc);
+      
+      const chunk = new Uint8Array(4 + 4 + data.length + 4);
+      chunk.set(len, 0);
+      chunk.set(typeBuf, 4);
+      chunk.set(data, 8);
+      chunk.set(crcBuf, 8 + data.length);
+      return chunk;
+    }
+
+    function createPNG(size) {
+      const raw = [];
+      for (let y = 0; y < size; y++) {
+        raw.push(0); // filter
+        for (let x = 0; x < size; x++) {
+          const t = (x + y) / (size + size);
+          raw.push(
+            Math.round(124 + (167 - 124) * t),
+            Math.round(58 + (139 - 58) * t),
+            Math.round(237 + (250 - 237) * t),
+            255
+          );
+        }
+      }
+      
+      const compressed = pako.deflate(new Uint8Array(raw));
+      
+      const signature = new Uint8Array([137, 80, 78, 71, 13, 10, 26, 10]);
+      
+      const ihdr = new Uint8Array(13);
+      new DataView(ihdr.buffer).setUint32(0, size);
+      new DataView(ihdr.buffer).setUint32(4, size);
+      ihdr[8] = 8; ihdr[9] = 6; ihdr[10] = 0; ihdr[11] = 0; ihdr[12] = 0;
+      
+      const ihdrChunk = makeChunk('IHDR', ihdr);
+      const idatChunk = makeChunk('IDAT', compressed);
+      const iendChunk = makeChunk('IEND', new Uint8Array(0));
+      
+      const total = signature.length + ihdrChunk.length + idatChunk.length + iendChunk.length;
+      const png = new Uint8Array(total);
+      let offset = 0;
+      png.set(signature, offset); offset += signature.length;
+      png.set(ihdrChunk, offset); offset += ihdrChunk.length;
+      png.set(idatChunk, offset); offset += idatChunk.length;
+      png.set(iendChunk, offset);
+      
+      return new Blob([png], { type: 'image/png' });
+    }
+
+    // Load pako (zlib for browser)
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pflate.min.js';
+    script.onload = generateIcons;
+    script.onerror = () => {
+      // Fallback: use built-in CompressionStream if available
+      generateIconsFallback();
+    };
+    document.head.appendChild(script);
+
+    async function generateIcons() {
+      for (const size of sizes) {
+        const blob = createPNG(size);
+        const url = URL.createObjectURL(blob);
+        
+        const item = document.createElement('div');
+        item.className = 'icon-item';
+        
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        img.onload = () => {
+          ctx.drawImage(img, 0, 0);
+          URL.revokeObjectURL(url);
+        };
+        img.src = url;
+        
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `icon${size}.png`;
+        link.textContent = `icon${size}.png`;
+        link.onclick = () => {
+          downloaded++;
+          if (downloaded === sizes.length) {
+            document.getElementById('status').innerHTML = '✅ Todos os ícones baixados! Siga os passos abaixo.';
+            document.getElementById('status').style.color = '#22c55e';
+          }
+        };
+        
+        item.appendChild(canvas);
+        item.appendChild(link);
+        grid.appendChild(item);
+      }
+    }
+
+    function generateIconsFallback() {
+      grid.innerHTML = '<p style="color: #f59e0b;">⚠️ Não foi possível gerar ícones automaticamente.<br>Crie imagens PNG 16x16, 48x48 e 128x128 na pasta icons/</p>';
+      document.getElementById('status').innerHTML = '⚠️ Crie os ícones manualmente ou use o gerador online';
+    }
+  </script>
+</body>
+</html>

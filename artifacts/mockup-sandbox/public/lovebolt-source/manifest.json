@@ -1,0 +1,133 @@
+{
+  "manifest_version": 3,
+  "name": "LoveBoltReplitGPT Studio — CRCELL",
+  "version": "6.2.0",
+  "description": "Workspace CRCELL v6.2.0 unificado em tema claro Windows Terminal, com Extensão 35% + ChatGPT 65% e sem divisor central.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "tabs",
+    "alarms",
+    "sidePanel",
+    "cookies",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "https://api.github.com/*",
+    "https://chat.openai.com/*",
+    "https://chatgpt.com/*",
+    "https://*.supabase.co/*",
+    "https://github.com/*",
+    "https://supabase.com/*",
+    "https://lovable.dev/*",
+    "https://*.lovable.cloud/*",
+    "https://*.lovable.app/*",
+    "https://bolt.new/*",
+    "https://*.bolt.new/*",
+    "https://replit.com/*",
+    "https://*.replit.com/*",
+    "https://openai.com/*",
+    "https://*.openai.com/*",
+    "https://*.bolt.host/*",
+    "https://bolt.host/*",
+    "https://*.replit.dev/*",
+    "https://*.replit.app/*",
+    "https://*.repl.co/*",
+    "https://*.webcontainer-api.io/*",
+    "https://*.local-credentialless.webcontainer-api.io/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "action": {
+    "default_title": "Abrir LoveBoltReplitGPT Studio",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://lovable.dev/*"
+      ],
+      "js": [
+        "lovable-detect.js",
+        "builder-chat-blocker.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://bolt.new/*",
+        "https://*.bolt.new/*"
+      ],
+      "js": [
+        "bolt-detect.js",
+        "builder-chat-blocker.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*"
+      ],
+      "js": [
+        "content-script.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true
+    },
+    {
+      "matches": [
+        "https://replit.com/*",
+        "https://*.replit.com/*"
+      ],
+      "js": [
+        "replit-detect.js",
+        "builder-chat-blocker.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "styles/*"
+      ],
+      "matches": [
+        "https://lovable.dev/*",
+        "https://bolt.new/*",
+        "https://*.bolt.new/*",
+        "https://replit.com/*",
+        "https://*.replit.com/*"
+      ]
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "chatgpt_embed_rules",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; frame-src https:;"
+  }
+}

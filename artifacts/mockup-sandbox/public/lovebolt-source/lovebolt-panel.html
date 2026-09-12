@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoveBoltReplitGPT Studio — CRCELL</title>
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/sidepanel.css">
+  <link rel="stylesheet" href="styles/sidepanel-legacy.css">
+  <link rel="stylesheet" href="styles/sidepanel-v348.css">
+  <link rel="stylesheet" href="styles/sidepanel-v440.css">
+  <link rel="stylesheet" href="styles/sidepanel-v450.css">
+  <link rel="stylesheet" href="styles/sidepanel-v540.css">
+  <link rel="stylesheet" href="styles/windows-terminal-light.css">
+</head>
+<body class="light">
+  <header class="header header--main-tools">
+    <div class="header-brand">
+      <div class="header-logo"><img src="icons/icon128.png" alt="Equipe LoveBoltReplitGPT"></div>
+      <div class="brand-title-block">
+        <h1 class="header-title header-title--lovebolt"><span class="brand-love">Love</span><span class="brand-bolt">Bolt</span><span class="brand-replit">Replit</span><span class="brand-gpt">GPT</span></h1><div class="header-robot-team" aria-label="Equipe de quatro robôs"><span data-team-platform="lovable" title="Lovable">🤖</span><span data-team-platform="bolt" title="Bolt.new">🤖</span><span data-team-platform="replit" title="Replit">🤖</span><span data-team-platform="gpt" title="GPT Studio">🤖</span></div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button id="settingsBtn" class="icon-btn header-action-btn" title="Configurações">
+        <span class="header-config-icon" aria-hidden="true">⚙</span>
+        <span>Config</span>
+      </button>
+      <button id="overlayToggleBtn" class="overlay-toggle-btn is-on header-action-btn" type="button" title="Desativar bloqueio do chat oficial nas plataformas" aria-pressed="true">
+        <span class="overlay-toggle-icon" id="overlayToggleIcon">◉</span>
+        <span class="overlay-toggle-label" id="overlayToggleLabel">Bloqueio ON</span>
+      </button>
+      <button id="headerPullBtn" class="header-pull-btn header-action-btn" type="button" title="Atualizar GitHub e projetos">
+        <span class="header-pull-icon">↻</span>
+        <span>Pull</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="content">
+
+    <!-- ═══ ATALHOS DE PROMPTS — TOPO INDEPENDENTE ═══ -->
+    <div class="card prompt-top-card" id="promptTopCard">
+      <div class="prompt-shortcuts-wrap">
+        <div class="top-tools-row" id="topToolsRow">
+          <button type="button" class="prompt-shortcuts-btn prompt-shortcuts-btn--top top-tool-btn" id="promptShortcutsBtn" title="Abrir atalhos rápidos" aria-expanded="false">
+            <span class="prompt-shortcuts-icon">✨</span>
+            <span class="prompt-shortcuts-btn-main">Atalhos Rápidos</span>
+            <span class="prompt-shortcuts-count" id="promptShortcutsCount">0</span>
+            <span class="prompt-shortcuts-arrow" id="promptShortcutsArrow">›</span>
+          </button>
+          <button type="button" class="top-tool-btn integration-toggle-btn" id="integrationToggleBtn" title="Ocultar ou mostrar integração" aria-expanded="true" aria-controls="integrationCard">
+            <span class="integration-toggle-icon">🔌</span>
+            <span class="integration-toggle-label" id="integrationToggleLabel">Ocultar integração</span>
+            <span class="integration-toggle-arrow" id="integrationToggleArrow">⌃</span>
+          </button>
+        </div>
+        <div class="prompt-shortcuts-panel" id="promptShortcutsPanel" style="display: none;">
+          <div class="prompt-shortcuts-panel-header">
+            <div>
+              <strong>Atalhos de Prompts e Presets</strong>
+              <span>Escolha o prompt, selecione o modo e envie ao ChatGPT.</span>
+            </div>
+            <button type="button" class="prompt-shortcuts-close" id="promptShortcutsClose" title="Fechar" aria-label="Fechar atalhos">×</button>
+          </div>
+          <div class="prompt-shortcuts-content" id="promptShortcutsContent"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ INTEGRAÇÃO UNIFICADA: Projeto + GitHub + Supabase ═══ -->
+    <div class="card card-accent" id="integrationCard">
+      <div class="card-header">
+        <div class="card-title-row">
+          <span class="card-icon">💜</span>
+          <h2 class="card-title">Integração</h2>
+        </div>
+        <span class="badge badge-offline" id="integrationStatus">
+          <span class="badge-dot"></span>
+          Não conectado
+        </span>
+      </div>
+
+      <div class="card-body">
+        <!-- Projeto detectado (Lovable, Bolt.new, Replit ou GPT Studio) -->
+        <div class="project-detect-section" id="autoDetectSection" style="display: none;">
+          <div class="project-detect-header">
+            <span class="project-detect-name" id="autoDetectProject">-</span>
+          </div>
+          <div class="divider"></div>
+        </div>
+
+        <!-- Não conectado -->
+        <div id="integrationConnect">
+          <button class="btn btn-primary" id="openTokenBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+              <polyline points="10 17 15 12 10 7"></polyline>
+              <line x1="15" y1="12" x2="3" y2="12"></line>
+            </svg>
+            Conectar com GitHub
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
+          <p class="hint-text">Conecta GitHub + Banco de dados automaticamente para os projetos detectados</p>
+        </div>
+
+        <!-- Token Form -->
+        <div id="tokenForm" style="display: none;">
+          <div class="alert alert-info">
+            <span>1.</span> Copie o token da página que abriu no GitHub com acesso aos repositórios necessários
+          </div>
+          <div class="input-group">
+            <input type="password" id="tokenInput" autocomplete="off" spellcheck="false" class="input mono" placeholder="ghp_xxxxxxxxxxxx">
+            <button class="btn-icon" id="pasteTokenBtn" title="Colar">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+              </svg>
+            </button>
+          </div>
+          <div class="btn-row">
+            <button class="btn btn-primary" id="connectBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              2. Conectar
+            </button>
+            <button class="btn btn-ghost" id="cancelBtn">Cancelar</button>
+          </div>
+        </div>
+
+        <!-- Conectado -->
+        <div id="integrationConnected" style="display: none;">
+          <div class="user-row">
+            <img id="userAvatar" class="avatar" src="" alt="">
+            <div class="user-info">
+              <span class="user-name" id="username"></span>
+              <span class="user-detail" id="repoCount"></span>
+            </div>
+          </div>
+
+          <div class="connections-grid" id="connectionsGrid">
+            <div class="connection-item" id="githubConnItem">
+              <div class="connection-icon">🐙</div>
+              <div class="connection-info">
+                <span class="connection-name">Git</span>
+                <span class="connection-detail" id="githubConnDetail">Conectado</span>
+              </div>
+              <span class="connection-check">✓</span>
+            </div>
+            <div class="connection-item connection-item--toggle" id="dbConnItem">
+              <div class="connection-icon">🗄️</div>
+              <div class="connection-info">
+                <span class="connection-name">Banco</span>
+                <span class="connection-detail" id="dbConnDetail">Aguardando projeto...</span>
+              </div>
+              <span class="connection-check" id="dbConnCheck" style="display: none;">✓</span>
+              <span class="connection-spinner" id="dbConnSpinner" style="display: none;">
+                <span class="spinner-sm"></span>
+              </span>
+              <span class="connection-toggle" id="dbToggle">›</span>
+            </div>
+            <div class="connection-item connection-item--summary" id="projectConnItem" title="Projeto Lovable, Bolt.new, Replit ou GPT Studio selecionado">
+              <div class="connection-icon">💜⚡</div>
+              <div class="connection-info">
+                <span class="connection-name">Projeto</span>
+                <span class="connection-detail" id="projectConnDetail">Nenhum</span>
+              </div>
+            </div>
+            <div class="connection-item connection-item--summary" id="repoConnItem" title="Repositório GitHub do projeto e estado de verificação">
+              <div class="connection-icon">📂</div>
+              <div class="connection-info">
+                <span class="connection-name">Repositório</span>
+                <span class="connection-detail" id="repoConnDetail">Nenhum</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="github-diagnostic" id="githubDiagnostic" hidden>
+            <div class="github-diagnostic-head">
+              <span>Diagnóstico GitHub</span>
+              <span class="github-diagnostic-badge" id="githubDiagnosticBadge">Aguardando</span>
+            </div>
+            <div class="github-diagnostic-grid">
+              <span>Origem</span><strong id="githubDiagnosticSource">—</strong>
+              <span>Confiança</span><strong id="githubDiagnosticConfidence">—</strong>
+              <span>Branch</span><strong id="githubDiagnosticBranch">—</strong>
+              <span>Estado</span><strong id="githubDiagnosticState">—</strong>
+            </div>
+            <div class="github-diagnostic-reason" id="githubDiagnosticReason"></div>
+            <button class="github-force-detect-btn" id="forceRepoDetectBtn" type="button" title="Atualizar GitHub, reler o projeto aberto e forçar a busca do repositório">
+              <span class="github-force-detect-icon">↻</span>
+              <span class="github-force-detect-label">Forçar detecção do repositório</span>
+            </button>
+            <div class="github-force-result" id="githubForceResult" hidden></div>
+          </div>
+
+          <!-- Detalhes do banco (colapsável) -->
+          <div class="db-details" id="dbDetails" style="display: none;">
+            <div id="supabaseKeyForm" style="display: none;">
+              <div class="divider"></div>
+              <div class="alert alert-info">
+                <span>⚡</span> URL do banco detectada — se a chave pública não vier automaticamente, cole a <strong>public/anon key</strong>
+              </div>
+              <input type="url" id="supabaseAutoUrl" class="input mono" readonly style="opacity: 0.6; font-size: 11px;">
+              <div class="hint-steps" style="margin-bottom: 8px;">
+                <div class="hint-step"><span class="step-num">1</span> Abra <strong>Supabase → Settings → API</strong></div>
+                <div class="hint-step"><span class="step-num">2</span> Copie a <strong>anon / public</strong> key</div>
+              </div>
+              <div class="input-group">
+                <input type="text" id="supabaseKeyInput" class="input mono" placeholder="sb_publishable_... ou eyJ...">
+                <button class="btn-icon" id="pasteKeyBtn" title="Colar">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                  </svg>
+                </button>
+              </div>
+              <button class="btn btn-primary supabase" id="supabaseKeySaveBtn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Conectar Banco de Dados
+              </button>
+              <button class="btn btn-ghost btn-sm" id="supabaseSkipBtn" style="margin-top: 6px;">
+                Pular por agora
+              </button>
+            </div>
+            <div class="supabase-connected-row" id="supabaseConnectedRow" style="display: none;">
+              <div class="divider"></div>
+              <div class="supabase-connected-badge">
+                <span>🗄️</span>
+                <div>
+                  <span class="user-name" id="supabaseRef"></span>
+                  <span class="user-detail mono" id="supabaseUrl"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Projetos Lovable + Bolt.new + Replit: lista dinâmica -->
+          <div class="projects-section" id="projectsSection">
+            <div class="projects-header-row">
+              <button class="projects-toggle-btn" id="projectsToggleBtn">
+                <span class="projects-toggle-icon">💜⚡</span>
+                <span class="projects-toggle-label">Projetos Lovable + Bolt + Replit</span>
+                <span class="projects-toggle-count" id="projectsCount">0</span>
+                <span class="projects-toggle-arrow" id="projectsArrow">›</span>
+              </button>
+              <button class="projects-refresh-btn" id="projectsRefreshBtn" title="Atualizar projetos Lovable, Bolt.new e Replit" aria-label="Atualizar projetos Lovable, Bolt.new e Replit">↻</button>
+            </div>
+            <div class="projects-dropdown" id="projectsDropdown" style="display: none;">
+              <div class="projects-empty">Carregando projetos do Lovable, Bolt.new e Replit...</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ═══ CHATGPT ═══ -->
+    <div class="card card-chat chat-shell-card" id="chatCard">
+      <div class="lovebolt-chat-shell">
+        <div class="lovebolt-chat-topbar">
+          <div class="lovebolt-chat-brand">
+            <span class="lovebolt-chat-infinity">∞</span>
+            <div class="lovebolt-chat-brand-copy">
+              <div class="lovebolt-chat-brand-title"><span class="lovebolt-chat-brand-name">LoveBoltReplit</span> <b>Ilimitado</b></div>
+              <p class="lovebolt-chat-brand-subtitle" id="chatHeroSubtitle">Converse com a equipe de 4 robôs sem limites.</p>
+            </div>
+          </div>
+          <div class="lovebolt-chat-window-actions" aria-hidden="true"></div>
+        </div>
+
+        <div class="lovebolt-chat-pills">
+          <span class="lovebolt-pill"><span class="lovebolt-pill-dot lovebolt-pill-dot--lovable"></span> Lovable = roxo</span>
+          <span class="lovebolt-pill"><span class="lovebolt-pill-dot lovebolt-pill-dot--bolt"></span> Bolt = azul</span>
+          <span class="lovebolt-pill"><span class="lovebolt-pill-dot lovebolt-pill-dot--replit"></span> Replit = laranja</span>
+        </div>
+
+        <div class="lovebolt-chat-divider"></div>
+
+        <div class="lovebolt-chat-route-copy">
+          <div class="lovebolt-chat-route-title">Rotas disponíveis</div>
+          <div class="lovebolt-chat-route-subtitle">Escolha onde enviar sua mensagem.</div>
+        </div>
+
+        <div class="chat-project-bar lovebolt-chat-project" id="chatProjectLabel" style="display: none;">
+          <span>💜⚡</span>
+          <span class="chat-project-name">-</span>
+          <span class="chat-project-repo">-</span>
+        </div>
+
+        <div class="chat-messages lovebolt-chat-messages" id="chatMessages" hidden aria-hidden="true"></div>
+
+        <div class="lovebolt-chat-composer-wrap">
+          <div class="lovebolt-chat-composer">
+            <textarea id="chatInput" class="chat-input lovebolt-chat-input" placeholder="Digite o que deseja fazer no projeto atual..." rows="4"></textarea>
+            <div class="lovebolt-attachments" id="chatAttachments" hidden aria-live="polite"></div>
+            <input id="chatAttachmentInput" type="file" multiple hidden accept="*/*">
+            <div class="lovebolt-chat-toolbar" role="group" aria-label="Escolher rota de envio">
+              <button class="lovebolt-attach-btn" id="chatAttachBtn" type="button" title="Anexar arquivos" aria-label="Anexar arquivos">
+                <span>📎</span>
+              </button>
+              <span class="lovebolt-toolbar-divider"></span>
+              <div class="chat-route-actions lovebolt-route-actions">
+                <button class="chat-route-btn chat-route-btn--official" id="chatOfficialBtn" type="button" data-chat-route="official" title="Enviar ao agente oficial da plataforma. Pode consumir tokens/créditos da plataforma.">
+                  <span class="chat-route-icon">⚡</span>
+                  <span>Chat Oficial</span>
+                </button>
+                <button class="chat-route-btn chat-route-btn--github" id="chatGithubBtn" type="button" data-chat-route="github" title="Enviar ao ChatGPT para editar pelo repositório GitHub vinculado, sem usar o agente oficial da plataforma.">
+                  <span class="chat-route-icon">🐙</span>
+                  <span>Chat GitHub</span>
+                </button>
+              </div>
+              <button class="lovebolt-send-btn" id="chatSendBtn" type="button" title="Enviar pela rota selecionada" aria-label="Enviar">
+                ↑
+              </button>
+            </div>
+          </div>
+
+          <div class="lovebolt-chat-footer-row">
+            <div class="lovebolt-chat-footer-copy">🛡 LoveBoltReplit ilimitado ativo — Sem limites, sem interrupções.</div>
+            <div class="chat-header-status lovebolt-chat-status">
+              <span class="chat-status-dot offline" id="chatStatusDot"></span>
+              <span class="chat-status-text" id="chatStatusText">Verificando...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <span class="footer-version">v6.2.0 · Terminal Light · 35/65 · 4 Robôs</span>
+  </footer>
+
+  <script src="prompt-presets.js"></script>
+  <script src="chat.js"></script>
+  <script src="sidepanel.js"></script>
+  <script src="responsive-layout.js"></script>
+</body>
+</html>

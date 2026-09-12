@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ChatGPT Preview</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+      color: #111827;
+      background: #fff;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body { display: flex; min-height: 100vh; background: #fff; }
+    .app { display: flex; flex: 1; min-height: 100vh; }
+    .sidebar {
+      width: 232px; flex: 0 0 232px; background: #f7f7f8; border-right: 1px solid #e5e7eb;
+      padding: 12px; display: flex; flex-direction: column; gap: 16px;
+    }
+    .new-chat {
+      border: 1px solid #d1d5db; background: #fff; border-radius: 6px; padding: 9px 11px;
+      display: flex; align-items: center; gap: 8px; color: #111827; font-weight: 600; font-size: 12px;
+    }
+    .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13px; }
+    .brand-mark {
+      width: 24px; height: 24px; display: grid; place-items: center; border: 1px solid #d1d5db;
+      border-radius: 5px; background: #fff; font-size: 16px;
+    }
+    .section-label { color: #6b7280; font: 700 10px/1.2 "Cascadia Code", monospace; text-transform: uppercase; letter-spacing: .06em; }
+    .history { display: flex; flex-direction: column; gap: 4px; }
+    .history-item { padding: 8px; border-radius: 5px; font-size: 11px; color: #374151; }
+    .history-item.active { background: #e5e7eb; color: #111827; font-weight: 600; }
+    .sidebar-footer { margin-top: auto; border-top: 1px solid #e5e7eb; padding-top: 12px; font-size: 10px; color: #6b7280; }
+    .main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+    .main-head { height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; border-bottom: 1px solid #f0f0f0; }
+    .model { font-size: 13px; font-weight: 650; }
+    .model span { color: #6b7280; font-weight: 400; margin-left: 5px; }
+    .head-pill { color: #6b7280; font-size: 11px; }
+    .conversation { flex: 1; width: min(760px, 100%); margin: 0 auto; padding: 52px 28px 28px; display: flex; flex-direction: column; }
+    .welcome { margin: auto 0; text-align: center; }
+    .welcome-mark { font-size: 42px; line-height: 1; margin-bottom: 14px; color: #111827; }
+    h1 { font-size: 26px; letter-spacing: -.04em; margin: 0 0 10px; }
+    .welcome p { margin: 0 auto; max-width: 440px; color: #6b7280; font-size: 13px; line-height: 1.6; }
+    .suggestions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 28px; }
+    .suggestion { border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; text-align: left; font-size: 11px; color: #374151; background: #fff; }
+    .composer-wrap { margin-top: auto; padding-top: 32px; }
+    .composer { border: 1px solid #9ca3af; border-radius: 8px; padding: 12px; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,.05); }
+    textarea { width: 100%; border: 0; outline: 0; resize: none; min-height: 48px; font: 13px/1.5 inherit; color: #111827; }
+    textarea::placeholder { color: #9ca3af; }
+    .composer-actions { display: flex; align-items: center; justify-content: space-between; color: #6b7280; font-size: 11px; }
+    .composer-tools { display: flex; gap: 12px; }
+    .send { width: 28px; height: 28px; border: 0; border-radius: 6px; background: #111827; color: #fff; font-size: 15px; }
+    @media (max-width: 900px) { .sidebar { width: 185px; flex-basis: 185px; } .conversation { padding-left: 18px; padding-right: 18px; } }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">◎</div><span>ChatGPT</span></div>
+      <button class="new-chat"><span>＋</span> Nova conversa</button>
+      <div class="section-label">Conversas recentes</div>
+      <div class="history">
+        <div class="history-item active">Planejar nova interface</div>
+        <div class="history-item">Ajustar conexão GitHub</div>
+        <div class="history-item">Revisar fluxo do projeto</div>
+      </div>
+      <div class="sidebar-footer">Preview local para inspeção visual<br>O ChatGPT real abre pelo botão ↗</div>
+    </aside>
+    <main class="main">
+      <header class="main-head"><div class="model">ChatGPT <span>5 · padrão</span></div><div class="head-pill">Sessão conectada</div></header>
+      <section class="conversation">
+        <div class="welcome">
+          <div class="welcome-mark">◎</div>
+          <h1>Como posso ajudar?</h1>
+          <p>Esta área representa o painel do ChatGPT dentro da composição atual da extensão.</p>
+          <div class="suggestions">
+            <div class="suggestion">Explorar uma ideia de produto</div>
+            <div class="suggestion">Revisar uma implementação</div>
+            <div class="suggestion">Criar uma interface mais clara</div>
+            <div class="suggestion">Conectar um repositório</div>
+          </div>
+        </div>
+        <div class="composer-wrap">
+          <div class="composer">
+            <textarea placeholder="Mensagem para o ChatGPT" aria-label="Mensagem"></textarea>
+            <div class="composer-actions"><div class="composer-tools"><span>＋ Anexar</span><span>Ferramentas</span></div><button class="send" aria-label="Enviar">↑</button></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
