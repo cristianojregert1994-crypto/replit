@@ -3,6 +3,17 @@
  * Mantém todo o painel utilizável ao redimensionar a sidebar do Chrome.
  */
 (() => {
+  // Visual-only GitHub Dark redesign. Loaded last so it can safely override legacy themes
+  // without changing DOM IDs, events, integrations or application logic.
+  const redesignHref = 'styles/github-dark-redesign.css';
+  if (!document.querySelector(`link[href="${redesignHref}"]`)) {
+    const redesign = document.createElement('link');
+    redesign.rel = 'stylesheet';
+    redesign.href = redesignHref;
+    redesign.dataset.uiLayer = 'github-dark-redesign';
+    document.head.appendChild(redesign);
+  }
+
   const root = document.documentElement;
   const body = document.body;
   let raf = 0;
@@ -61,5 +72,5 @@
   if (initialEmpty) initialEmpty.remove();
   scheduleLayout();
 
-  console.log('[ResponsiveLayout] Loaded v3.48.0');
+  console.log('[ResponsiveLayout] Loaded v3.48.0 + GitHub Dark redesign');
 })();
