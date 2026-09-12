@@ -1,0 +1,1 @@
+import{j as e}from"./index-YmjHZFvB.js";function l(){return e.jsx("main",{className:"min-h-screen w-full overflow-hidden bg-[#e7e7e7]",children:e.jsx("iframe",{title:"LoveBoltReplitGPT — interface redesenhada",src:"/__mockup/lovebolt-source/sidepanel-preview.html",className:"block h-screen w-full border-0"})})}export{l as Current};

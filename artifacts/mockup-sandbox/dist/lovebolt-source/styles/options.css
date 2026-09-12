@@ -1,0 +1,310 @@
+/* Lovable GPT Connector - Options Page Styles v2 */
+
+:root {
+  --primary: #7c3aed;
+  --primary-light: #a78bfa;
+  --primary-dark: #5b21b6;
+  --bg-dark: #0a0a0f;
+  --bg-card: #12121a;
+  --bg-input: #0e0e16;
+  --text-primary: #e8e8ed;
+  --text-secondary: #8b8b9e;
+  --text-muted: #5c5c6f;
+  --border: #22222d;
+  --border-focus: #7c3aed;
+  --success: #22c55e;
+  --error: #ef4444;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.options-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+.options-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.options-title {
+  font-size: 26px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.options-subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* Sections */
+.settings-section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.section-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-icon.github { background: rgba(240, 246, 252, 0.08); color: #f0f6fc; }
+.section-icon.supabase { background: rgba(62, 207, 142, 0.08); color: #3ecf8e; }
+
+.section-name { font-size: 15px; font-weight: 700; }
+.section-desc { font-size: 12px; color: var(--text-muted); }
+
+/* Status Grid */
+.status-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.status-card {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+}
+
+.status-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.status-icon { font-size: 16px; }
+.status-label { font-size: 12px; color: var(--text-muted); }
+
+.status-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.status-badge.connected { color: var(--success); }
+
+/* Info Box */
+.info-box {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.info-hint {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.steps-list {
+  margin: 8px 0 0 16px;
+  font-size: 12px;
+}
+
+.steps-list li {
+  margin-bottom: 4px;
+}
+
+.steps-list a {
+  color: var(--primary-light);
+  text-decoration: none;
+}
+
+.steps-list a:hover { text-decoration: underline; }
+
+/* User Card */
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+  padding: 12px;
+  background: rgba(34, 197, 94, 0.05);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: var(--radius-sm);
+}
+
+.avatar-large {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.project-icon-large {
+  font-size: 24px;
+}
+
+.user-name-large {
+  display: block;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.user-detail-large {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Fields */
+.field-group {
+  margin-bottom: 14px;
+}
+
+.field-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.field-input {
+  width: 100%;
+  padding: 10px 14px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  outline: none;
+}
+
+.field-input:focus {
+  border-color: var(--border-focus);
+}
+
+.field-input::placeholder {
+  color: var(--text-muted);
+  font-family: inherit;
+}
+
+/* Toggle */
+.toggle-group { margin-bottom: 0; }
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.toggle-input { display: none; }
+
+.toggle-switch {
+  width: 40px;
+  height: 22px;
+  background: var(--border);
+  border-radius: 11px;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.toggle-switch::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  background: var(--text-secondary);
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.toggle-input:checked + .toggle-switch { background: var(--primary); }
+.toggle-input:checked + .toggle-switch::after { left: 21px; background: white; }
+
+.field-hint {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* Buttons */
+.primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--primary);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.primary-btn:hover {
+  background: var(--primary-dark);
+}
+
+.settings-section.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Toast */
+.save-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: var(--success);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.save-toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+\n\n/* v5.8.0 — tema claro único */\n:root{--bg-dark:#f3f4f6;--bg-card:#ffffff;--bg-input:#f8fafc;--text-primary:#111827;--text-secondary:#374151;--text-muted:#6b7280;--border:#d1d5db;--border-focus:#111827}\nhtml,body{color-scheme:light!important;background:#f3f4f6!important;color:#111827!important}.settings-section,.status-card{box-shadow:0 2px 10px rgba(0,0,0,.04)}.section-icon.github{background:#f3f4f6!important;color:#111827!important}\n

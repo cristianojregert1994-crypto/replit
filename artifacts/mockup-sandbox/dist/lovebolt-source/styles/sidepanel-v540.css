@@ -1,0 +1,71 @@
+/* LoveBoltReplitGPT v5.4.0 — contenção absoluta de largura/altura */
+*{min-width:0;box-sizing:border-box}
+html,body{width:100%!important;max-width:100%!important;min-width:0!important;overflow-x:hidden!important;overscroll-behavior-x:none}
+body{position:relative}
+body>*{max-width:100%!important}
+.header,.content,.footer,.card,.card-body,.card-header,.lovebolt-chat-shell,.lovebolt-chat-composer-wrap,.lovebolt-chat-composer{width:100%;max-width:100%;min-width:0}
+.header{gap:5px;padding-left:7px!important;padding-right:7px!important;overflow:hidden!important}
+.header-brand{flex:1 1 auto;min-width:0;overflow:hidden}
+.header-actions{display:flex;align-items:center;justify-content:flex-end;gap:3px;flex:0 1 auto;min-width:0;max-width:68%;overflow:hidden}
+.header-action-btn{min-width:0!important;max-width:100%;padding-left:5px!important;padding-right:5px!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.header-title--lovebolt{max-width:100%;overflow:hidden;text-overflow:ellipsis}
+.content{padding-left:7px!important;padding-right:7px!important;overflow-x:hidden!important}
+.card,.prompt-shortcuts-panel,.prompt-mode-dialog{max-width:100%!important}
+.top-tools-row,.projects-header-row,.btn-row,.input-group,.card-actions,.status-row,.lovebolt-chat-toolbar,.lovebolt-route-actions{max-width:100%;min-width:0}
+.top-tools-row>*{min-width:0}
+.projects-toggle-btn,.integration-toggle-btn,.prompt-shortcuts-btn,.input-group .input,.lovebolt-route-actions{min-width:0;max-width:100%}
+.connection-detail,.project-item-meta,.detail-value,.chat-project-repo,.status-value{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%!important}
+img,svg,canvas,video{max-width:100%}
+pre,code{max-width:100%;overflow-wrap:anywhere;word-break:break-word}
+textarea,input,select,button{max-width:100%;min-width:0}
+
+/* Compacta sem remover funções. */
+body.lb-w-compact .header-actions{max-width:64%}
+body.lb-w-compact .header-action-label,
+body.lb-w-compact #settingsBtn>span:last-child,
+body.lb-w-compact #headerPullBtn>span:last-child{display:none!important}
+body.lb-w-compact .overlay-toggle-btn{min-width:34px!important;width:auto!important}
+body.lb-w-compact .overlay-toggle-label{max-width:42px}
+
+body.lb-w-narrow .header-logo{width:26px!important;height:26px!important;flex-basis:26px!important}
+body.lb-w-narrow .brand-title-block{display:none!important}
+body.lb-w-narrow .header-actions{flex:1 1 auto;max-width:none;justify-content:space-between}
+body.lb-w-narrow .header-action-btn{flex:1 1 0;min-width:0!important;padding:0 2px!important}
+body.lb-w-narrow #settingsBtn>span:last-child,
+body.lb-w-narrow .overlay-toggle-label,
+body.lb-w-narrow .header-action-label,
+body.lb-w-narrow #headerPullBtn>span:last-child{display:none!important}
+body.lb-w-narrow .overlay-toggle-btn{min-width:0!important;width:auto!important}
+body.lb-w-narrow .top-tools-row{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important}
+body.lb-w-narrow #integrationCard .connections-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+body.lb-w-narrow .lovebolt-chat-pills{grid-template-columns:1fr!important}
+body.lb-w-narrow #chatCard .lovebolt-chat-toolbar{display:grid!important;grid-template-columns:28px minmax(0,1fr) 32px!important;align-items:end!important}
+body.lb-w-narrow #chatCard .lovebolt-toolbar-divider{display:none!important}
+body.lb-w-narrow #chatCard .lovebolt-route-actions{display:grid!important;grid-template-columns:1fr!important;gap:3px!important}
+
+/* Em alturas pequenas, rolagem é vertical dentro do painel; nunca horizontal. */
+@media(max-height:650px){html,body{overflow-y:auto!important}.content{overflow-y:visible!important}}
+
+
+/* v5.6.0 — sistema único de LED/molduras da área Extensão */
+:root{--lb-led-line:rgba(var(--accent-rgb),.46);--lb-led-soft:rgba(var(--accent-rgb),.16);--lb-led-glow:rgba(var(--accent-rgb),.34)}
+body{border-left:1px solid var(--lb-led-line);border-right:1px solid var(--lb-led-line);box-shadow:inset 0 0 22px rgba(var(--accent-rgb),.025)}
+.header,.footer{position:relative;border-color:var(--lb-led-line)!important;box-shadow:inset 0 2px 0 rgba(var(--accent-rgb),.88),0 0 12px var(--lb-led-soft)!important}
+.footer{box-shadow:inset 0 -2px 0 rgba(var(--accent-rgb),.82),0 0 12px var(--lb-led-soft)!important}
+.card,.prompt-shortcuts-panel,.prompt-mode-dialog,.lovebolt-chat-shell{border-color:rgba(var(--accent-rgb),.38)!important;box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.07),0 0 11px rgba(var(--accent-rgb),.09)!important}
+#chatCard,.lovebolt-chat-shell{border-color:rgba(var(--accent-rgb),.56)!important;box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.10),0 0 15px rgba(var(--accent-rgb),.15)!important}
+.lovebolt-chat-composer,.chat-project-bar,.connection-item,.projects-toggle-btn,.projects-refresh-btn,.top-tool-btn,.header-action-btn,.btn,.btn-icon,.input,.prompt-shortcuts-btn{border-color:rgba(var(--accent-rgb),.24)!important}
+.lovebolt-chat-composer:focus-within{border-color:rgba(var(--accent-rgb),.72)!important;box-shadow:0 0 12px var(--lb-led-glow),inset 0 0 0 1px rgba(var(--accent-rgb),.12)!important}
+button:focus-visible,.btn:hover,.btn-icon:hover,.header-action-btn:hover,.top-tool-btn:hover,.projects-refresh-btn:hover,.projects-toggle-btn:hover,.prompt-shortcuts-btn:hover{border-color:rgba(var(--accent-rgb),.64)!important;box-shadow:0 0 9px rgba(var(--accent-rgb),.24),inset 0 0 0 1px rgba(var(--accent-rgb),.10)!important;outline:none}
+.header-robot-team span{width:17px;height:17px;display:grid;place-items:center;border:1px solid transparent;border-radius:6px}
+.header-robot-team span.is-active{opacity:1!important;border-color:currentColor;background:rgba(var(--accent-rgb),.09);box-shadow:0 0 8px currentColor,0 0 14px rgba(var(--accent-rgb),.18);transform:translateY(-1px)}
+.connection-item:hover,.connection-item:focus-within{border-color:rgba(var(--accent-rgb),.48)!important;box-shadow:0 0 8px rgba(var(--accent-rgb),.14)}
+.project-item.active{border:1px solid rgba(var(--accent-rgb),.64)!important;border-left:3px solid var(--accent)!important;background:rgba(var(--accent-rgb),.12)!important;box-shadow:0 0 10px rgba(var(--accent-rgb),.25),inset 0 0 10px rgba(var(--accent-rgb),.05)}
+.lovebolt-route-actions .chat-route-btn.is-selected{position:relative;border-color:rgba(var(--accent-rgb),.90)!important;background:rgba(var(--accent-rgb),.18)!important;color:var(--accent-bright)!important;box-shadow:0 0 10px var(--lb-led-glow),0 0 18px var(--lb-led-soft),inset 0 0 0 1px rgba(var(--accent-rgb),.18)!important}
+.lovebolt-route-actions .chat-route-btn.is-selected::after{content:"";width:6px;height:6px;flex:0 0 6px;border-radius:999px;background:var(--accent-bright);box-shadow:0 0 7px var(--accent-bright),0 0 12px var(--accent)}
+.overlay-toggle-btn.is-on,.header-action-btn[aria-pressed="true"],.top-tool-btn[aria-expanded="true"]{border-color:rgba(var(--accent-rgb),.72)!important;box-shadow:0 0 9px rgba(var(--accent-rgb),.25),inset 0 0 0 1px rgba(var(--accent-rgb),.12)!important}
+.badge-online,.connection-check,.chat-status-dot.online{filter:drop-shadow(0 0 5px currentColor)}
+.lovebolt-send-btn{box-shadow:0 0 10px rgba(var(--accent-rgb),.45),0 0 20px rgba(var(--accent-rgb),.18)!important}
+.lovebolt-send-btn:hover{box-shadow:0 0 14px rgba(var(--accent-rgb),.62),0 0 26px rgba(var(--accent-rgb),.24)!important}
+body.light .card,body.light .prompt-shortcuts-panel,body.light .prompt-mode-dialog,body.light .lovebolt-chat-shell{box-shadow:inset 0 0 0 1px rgba(var(--accent-rgb),.06),0 0 8px rgba(var(--accent-rgb),.07)!important}
+\n\n/* ═══ v5.8.0 — TEMA CLARO ÚNICO + LED PRETO GLOBAL ═══ */\n:root{--lb-led-rgb:0,0,0;--lb-led-line:rgba(0,0,0,.72);--lb-led-soft:rgba(0,0,0,.10);--lb-led-glow:rgba(0,0,0,.24)}\nhtml,body{color-scheme:light!important;background:#f2f4f7!important;color:#050505!important}\nbody{border-left-color:var(--lb-led-line)!important;border-right-color:var(--lb-led-line)!important;box-shadow:inset 0 0 18px rgba(0,0,0,.025)!important}\nbody::after,body.light::after{border-color:#000!important;box-shadow:inset 0 0 7px rgba(0,0,0,.09),0 0 8px rgba(0,0,0,.16)!important}\n.header,.footer{border-color:var(--lb-led-line)!important;box-shadow:inset 0 2px 0 #000,0 0 10px var(--lb-led-soft)!important}\n.footer{box-shadow:inset 0 -2px 0 #000,0 0 10px var(--lb-led-soft)!important}\n.card,.prompt-shortcuts-panel,.prompt-mode-dialog,.lovebolt-chat-shell{border-color:rgba(0,0,0,.34)!important;box-shadow:inset 0 0 0 1px rgba(0,0,0,.035),0 0 8px rgba(0,0,0,.07)!important}\n#chatCard,.lovebolt-chat-shell{border-color:rgba(0,0,0,.52)!important;box-shadow:inset 0 0 0 1px rgba(0,0,0,.05),0 0 12px rgba(0,0,0,.10)!important}\n.lovebolt-chat-composer,.chat-project-bar,.connection-item,.projects-toggle-btn,.projects-refresh-btn,.top-tool-btn,.header-action-btn,.btn,.btn-icon,.input,.prompt-shortcuts-btn{border-color:rgba(0,0,0,.24)!important}\n.lovebolt-chat-composer:focus-within{border-color:#000!important;box-shadow:0 0 10px var(--lb-led-glow),inset 0 0 0 1px rgba(0,0,0,.10)!important}\nbutton:focus-visible,.btn:hover,.btn-icon:hover,.header-action-btn:hover,.top-tool-btn:hover,.projects-refresh-btn:hover,.projects-toggle-btn:hover,.prompt-shortcuts-btn:hover{border-color:#000!important;box-shadow:0 0 7px rgba(0,0,0,.18),inset 0 0 0 1px rgba(0,0,0,.08)!important}\n.header-robot-team span.is-active{border-color:#000!important;background:#fff!important;box-shadow:0 0 8px rgba(0,0,0,.30),0 0 14px rgba(0,0,0,.10)!important;text-shadow:none!important}\n.connection-item:hover,.connection-item:focus-within{border-color:rgba(0,0,0,.46)!important;box-shadow:0 0 7px rgba(0,0,0,.10)!important}\n.project-item.active{border-color:rgba(0,0,0,.58)!important;border-left-color:#000!important;box-shadow:0 0 8px rgba(0,0,0,.14),inset 0 0 8px rgba(0,0,0,.035)!important}\n.lovebolt-route-actions .chat-route-btn.is-selected{border-color:#000!important;box-shadow:0 0 9px rgba(0,0,0,.22),0 0 15px rgba(0,0,0,.08),inset 0 0 0 1px rgba(0,0,0,.09)!important}\n.lovebolt-route-actions .chat-route-btn.is-selected::after{background:#000!important;box-shadow:0 0 7px rgba(0,0,0,.40),0 0 12px rgba(0,0,0,.18)!important}\n.overlay-toggle-btn.is-on,.header-action-btn[aria-pressed="true"],.top-tool-btn[aria-expanded="true"]{border-color:#000!important;box-shadow:0 0 7px rgba(0,0,0,.18),inset 0 0 0 1px rgba(0,0,0,.08)!important}\n.lovebolt-send-btn,.lovebolt-send-btn:hover{box-shadow:0 0 10px rgba(0,0,0,.24),0 0 18px rgba(0,0,0,.08)!important}\n

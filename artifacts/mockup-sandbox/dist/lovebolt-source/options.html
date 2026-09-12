@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LoveBoltReplit — Configurações</title>
+  <link rel="stylesheet" href="styles/options.css">
+<style>.brand-love{color:#8b5cf6}.brand-bolt{color:#3b82f6}.brand-replit{color:#f97316}.options-title small{font-size:.55em;color:#94a3b8;font-weight:600}</style>
+</head>
+<body class="light">
+  <div class="options-container">
+    <header class="options-header">
+      <h1 class="options-title"><span class="brand-love">Love</span><span class="brand-bolt">Bolt</span><span class="brand-replit">Replit</span> <small>GPT Connector</small></h1>
+      <p class="options-subtitle">Configurações</p>
+    </header>
+
+    <!-- Status Geral -->
+    <section class="settings-section status-section">
+      <h2 class="section-name">Status das Conexões</h2>
+      <div class="status-grid">
+        <div class="status-card" id="githubStatusCard">
+          <div class="status-card-header">
+            <span class="status-icon">🐙</span>
+            <span class="status-label">GitHub</span>
+          </div>
+          <span class="status-badge" id="githubStatusBadge">Desconectado</span>
+        </div>
+        <div class="status-card" id="supabaseStatusCard">
+          <div class="status-card-header">
+            <span class="status-icon">🗄️</span>
+            <span class="status-label">Supabase</span>
+          </div>
+          <span class="status-badge" id="supabaseStatusBadge">Desconectado</span>
+        </div>
+        <div class="status-card">
+          <div class="status-card-header">
+            <span class="status-icon">💜</span>
+            <span class="status-label">Lovable</span>
+          </div>
+          <span class="status-badge" id="lovableStatusBadge">-</span>
+        </div>
+        <div class="status-card">
+          <div class="status-card-header">
+            <span class="status-icon">🤖</span>
+            <span class="status-label">ChatGPT</span>
+          </div>
+          <span class="status-badge" id="chatgptStatusBadge">-</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- GitHub Info -->
+    <section class="settings-section">
+      <div class="section-header">
+        <div class="section-icon github">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="section-name">GitHub</h2>
+          <p class="section-desc">Conectado via OAuth - usa sua conta Google</p>
+        </div>
+      </div>
+      <div class="info-box">
+        <p>A autenticação é feita diretamente pelo GitHub. Quando você clica em "Conectar", o GitHub abre uma página de autorização. Se você já estiver logado no navegador, basta confirmar.</p>
+        <p class="info-hint">🔑 Permissões: acesso aos repositórios e dados do usuário</p>
+      </div>
+      <div id="githubUserInfo" class="user-card" style="display: none;">
+        <img id="githubAvatarLarge" class="avatar-large" src="" alt="">
+        <div>
+          <span class="user-name-large" id="githubNameLarge"></span>
+          <span class="user-detail-large" id="githubDetailLarge"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Supabase Info -->
+    <section class="settings-section">
+      <div class="section-header">
+        <div class="section-icon supabase">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M13.5 21.268V.75h5.25L12 12.25 5.25.75H10.5v20.518a2 2 0 01-2 2H5.25a2 2 0 01-2-2V2.5H0v19.768a3 3 0 003.75 2.918V.75h.75L12 13.25l7.5-12.5h.75v21.486a3 3 0 003.75-2.918V2.5H24v19.768a2 2 0 01-2 2h-3.25a2 2 0 01-2-2v-.001z"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="section-name">Supabase</h2>
+          <p class="section-desc">Configuração do banco de dados</p>
+        </div>
+      </div>
+      <div class="info-box">
+        <p>Para conectar ao Supabase:</p>
+        <ol class="steps-list">
+          <li>Abra o <a href="https://supabase.com/dashboard" target="_blank">Supabase Dashboard</a></li>
+          <li>Selecione seu projeto</li>
+          <li>Vá em <strong>Settings → API</strong></li>
+          <li>Copie a <strong>Project URL</strong> e a <strong>anon public</strong> key</li>
+          <li>Cole abaixo</li>
+        </ol>
+      </div>
+      <div id="supabaseConfigForm">
+        <div class="field-group">
+          <label class="field-label">Project URL</label>
+          <input type="url" id="supabaseUrl" class="field-input" placeholder="https://xxxxx.supabase.co">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Anon Key</label>
+          <input type="password" id="supabaseKey" class="field-input" placeholder="eyJhbGciOiJI...">
+        </div>
+        <button class="primary-btn" id="saveSupabase">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          Salvar Conexão
+        </button>
+      </div>
+      <div id="supabaseConnectedInfo" class="user-card" style="display: none;">
+        <span class="project-icon-large">🗄️</span>
+        <div>
+          <span class="user-name-large" id="supabaseProjectLarge"></span>
+          <span class="user-detail-large" id="supabaseUrlLarge"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sync Settings -->
+    <section class="settings-section">
+      <h2 class="section-name">Sincronização</h2>
+      <div class="field-group toggle-group">
+        <label class="toggle-label">
+          <span>Sincronização automática</span>
+          <input type="checkbox" id="autoSync" class="toggle-input" checked>
+          <span class="toggle-switch"></span>
+        </label>
+        <p class="field-hint">Detecta projetos Lovable, Bolt.new e Replit automaticamente</p>
+      </div>
+      <div class="field-group toggle-group">
+        <label class="toggle-label">
+          <span>Notificações</span>
+          <input type="checkbox" id="notifications" class="toggle-input" checked>
+          <span class="toggle-switch"></span>
+        </label>
+        <p class="field-hint">Mostra notificações ao enviar código</p>
+      </div>
+    </section>
+
+    <!-- Actions -->
+    <section class="settings-section actions">
+      <button class="primary-btn" id="saveBtn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        Salvar Tudo
+      </button>
+    </section>
+
+    <div class="save-toast" id="saveToast">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="20 6 9 17 4 12"></polyline>
+      </svg>
+      Configurações salvas!
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

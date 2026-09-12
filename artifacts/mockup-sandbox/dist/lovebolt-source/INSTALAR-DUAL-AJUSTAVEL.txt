@@ -1,0 +1,25 @@
+LOVE BOLT REPLIT + CHATGPT — CRCELL DUAL v4.1.0
+================================================
+
+INSTALAR NO CHROME
+1. Extraia o ZIP em uma pasta.
+2. Abra: chrome://extensions
+3. Ative "Modo do desenvolvedor".
+4. Clique em "Carregar sem compactação".
+5. Selecione a pasta LoveBoltReplit-ChatGPT-CRCELL-Dual-v4.1.0.
+6. Fixe o ícone da extensão e clique nele para abrir o Side Panel.
+
+COMO FUNCIONA
+- Esquerda: ChatGPT real incorporado.
+- Direita: LoveBoltReplit completo.
+- A barra central agora é arrastável: mova para esquerda ou direita para aumentar um painel e diminuir o outro.
+- Faixa de ajuste: 15% a 85%.
+- Duplo clique na barra central restaura 50/50.
+- A proporção escolhida fica salva automaticamente.
+- Ao usar Chat GitHub no LoveBoltReplit, o prompt/contexto/anexos são enviados para o ChatGPT incorporado.
+- Chat Oficial continua enviando para Lovable/Bolt/Replit, preservando o comportamento original.
+- Os botões ⌂, ↻ e ↗ no painel do ChatGPT continuam funcionando.
+
+LOGIN DO CHATGPT
+- Faça login no painel esquerdo normalmente.
+- Se uma futura alteração do ChatGPT bloquear o modo incorporado, clique em ↗ para abrir em uma aba; o fallback legado por aba foi preservado.

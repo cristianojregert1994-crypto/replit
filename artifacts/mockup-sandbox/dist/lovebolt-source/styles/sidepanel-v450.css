@@ -1,0 +1,89 @@
+/* LoveBoltReplit v4.5.0 — tema claro global, alto contraste e baixa transparência */
+body.light {
+  color-scheme: light;
+  background: #f2f4f7 !important;
+  color: #050505 !important;
+}
+body.light .header,
+body.light .card,
+body.light .prompt-shortcuts-panel,
+body.light .prompt-mode-dialog,
+body.light .connection-item,
+body.light .input,
+body.light .select,
+body.light .btn-icon,
+body.light textarea,
+body.light input,
+body.light select,
+body.light .chat-composer,
+body.light .chat-input-wrap,
+body.light .chat-input-container {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+body.light .header { background: #ffffff !important; }
+body.light .card,
+body.light .prompt-shortcuts-panel,
+body.light .prompt-mode-dialog { background-color: #ffffff !important; }
+body.light .card-accent { background: linear-gradient(135deg, rgba(var(--accent-rgb),.05), #ffffff) !important; }
+body.light .connection-item,
+body.light .input,
+body.light .select,
+body.light .btn-icon,
+body.light textarea,
+body.light input,
+body.light select,
+body.light .chat-composer,
+body.light .chat-input-wrap,
+body.light .chat-input-container { background-color: #f7f8fa !important; }
+body.light .icon-btn,
+body.light .btn-ghost,
+body.light .btn-outline-danger,
+body.light .header-action-btn,
+body.light .top-tool-btn,
+body.light .prompt-shortcuts-btn { background-color: #ffffff; }
+
+/* Letras e números ficam pretos/near-black no tema claro. */
+body.light .header-action-btn,
+body.light .top-tool-btn,
+body.light .prompt-shortcuts-btn,
+body.light .card-title,
+body.light .connection-name,
+body.light .connection-detail,
+body.light .hint-text,
+body.light .hint-step,
+body.light .user-name,
+body.light .user-detail,
+body.light .input,
+body.light .select,
+body.light textarea,
+body.light input,
+body.light option,
+body.light .chat-message,
+body.light .chat-message-text,
+body.light .chat-input,
+body.light .prompt-mode-option,
+body.light .prompt-mode-option strong,
+body.light .prompt-mode-option span {
+  color: #050505 !important;
+  text-shadow: none !important;
+}
+body.light input::placeholder,
+body.light textarea::placeholder { color: #333333 !important; opacity: 1 !important; }
+body.light .badge-offline { border-color: rgba(0,0,0,.16); color: #111111; background: #f5f6f8; }
+body.light ::-webkit-scrollbar-thumb { background: rgba(0,0,0,.24); }
+
+/* Mantém identidades e estados sem perder legibilidade. */
+body.light .brand-love { color: #6d28d9 !important; }
+body.light .brand-bolt { color: #1d4ed8 !important; }
+body.light .brand-replit { color: #c2410c !important; }
+body.light .badge-online,
+body.light .connection-check,
+body.light .alert-success { color: #166534 !important; }
+body.light .alert-error,
+body.light .error-text { color: #991b1b !important; }
+body.light .header-pull-btn { color: var(--accent) !important; }
+body.light .theme-toggle { color: #050505 !important; border-color: rgba(0,0,0,.14) !important; }
+
+/* v5.1 — equipe de quatro robôs e identidade por plataforma */
+.brand-gpt{color:#ef4444!important}.team-logo-mark{font-size:20px;line-height:1;filter:drop-shadow(0 0 7px rgba(var(--accent-rgb),.45))}.header-robot-team{display:flex;gap:2px;margin-top:2px}.header-robot-team span{font-size:9px;line-height:1;opacity:.28;filter:grayscale(.2);transition:.15s}.header-robot-team span[data-team-platform="lovable"]{color:#c026d3}.header-robot-team span[data-team-platform="bolt"]{color:#2563eb}.header-robot-team span[data-team-platform="replit"]{color:#f97316}.header-robot-team span[data-team-platform="gpt"]{color:#dc2626}body.platform-lovable .header-robot-team span[data-team-platform="lovable"],body.platform-bolt .header-robot-team span[data-team-platform="bolt"],body.platform-replit .header-robot-team span[data-team-platform="replit"],body.platform-gpt .header-robot-team span[data-team-platform="gpt"]{opacity:1;filter:none;text-shadow:0 0 7px currentColor}.header-title--lovebolt{display:flex!important;gap:1px!important}.brand-title-block{min-width:0}.header--main-tools .header-logo{display:grid!important;place-items:center!important}
